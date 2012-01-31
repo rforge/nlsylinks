@@ -5,7 +5,7 @@ require(testthat)
 #trace(ValidatePairLinks)
 
 
-detach("package:NlsyLinks")
+try(detach("package:NlsyLinks"), silent=TRUE)
 require(NlsyLinks)
 ?NlsyLinks
 
@@ -13,6 +13,14 @@ source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
 
 #expect_true(FALSE, "AAAAAAAAAAAAAAAAAAAAAAAAAAAA This test should fail during installation or checking?")
 
+rm(list=ls(all=TRUE))
+source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/CreatePairDatasetFixture.R")
+
+rm(list=ls(all=TRUE))
+test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/DVDatasetFixture.R")
+
+rm(list=ls(all=TRUE))
+source("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/ExpectedVectors.R")
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/UtilitiesFixture.R")
-#untrace(ValidatePairLinks)
+

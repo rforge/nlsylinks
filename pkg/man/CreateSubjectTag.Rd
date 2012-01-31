@@ -49,4 +49,9 @@ generation <- c(rep(1, 12), rep(2, 12))
 
 CreateSubjectTag(subjectIDs, generation)
 #Returns 7100, ..., 8200, 10001, ..., 10012
+
+#Use the ExtraDVs79 dataset, with numeric variables 'SubjectID' and 'Generation'.
+ExtraDVs79$SubjectTag <- CreateSubjectTag(subjectID=ExtraDVs79$SubjectID, generation=ExtraDVs79$Generation)
 }
+
+
