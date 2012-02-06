@@ -18,7 +18,7 @@ source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/CreatePairDatasetFixture.R")
 
 rm(list=ls(all=TRUE))
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/DVDatasetFixture.R")
+test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/OutcomeDatasetFixture.R")
 
 rm(list=ls(all=TRUE))
 source("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/ExpectedVectors.R")

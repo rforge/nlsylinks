@@ -12,8 +12,8 @@ Utilities and kinship information for Behavioral Genetics and Developmental rese
 \tabular{ll}{
 Package: \tab NlsyLinks\cr
 Type: \tab Package\cr
-Version: \tab 0.13\cr
-Date: \tab 2012-01-23\cr
+Version: \tab 0.14\cr
+Date: \tab 2012-02-06\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }

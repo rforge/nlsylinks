@@ -55,14 +55,14 @@ test_that("CreateSubjectTag -Scenario 6", {
   expect_equivalent(expected, CreateSubjectTag(ids, generation))
 })
 
-test_that("CreateSubjectTag -With ExtraDVs79", {
-  data(ExtraDVs79)
+test_that("CreateSubjectTag -With ExtraOutcomes79", {
+  data(ExtraOutcomes79)
   
-  actual <- CreateSubjectTag(subjectID=ExtraDVs79$SubjectID, generation=ExtraDVs79$Generation)
+  actual <- CreateSubjectTag(subjectID=ExtraOutcomes79$SubjectID, generation=ExtraOutcomes79$Generation)
   expected <- ExpectedSubjectTags
   
   expect_equal(expected, actual)
-  #cat(PrintVector(ExtraDVs79$SubjectTag))  
+  #cat(PrintVector(ExtraOutcomes79$SubjectTag))  
 })
 
 
@@ -71,7 +71,7 @@ test_that("CreateSubjectTag -With ExtraDVs79", {
 #   generation <- c(rep(1, 10), rep(2, 10))
 #   expected <- c(1:10*100, 1:10)
 #   expect_equal(expected, CreateSubjectTag(ids, generation))
-#   expect_equivalent(expected, IncludeSubjectTag(ExtraDVs79))
+#   expect_equivalent(expected, IncludeSubjectTag(ExtraOutcomes79))
 # })
 # test_that("CreateSubjectTag -Scenario 2", {
 #   ids <- c(71:80, 1:10)
@@ -110,14 +110,14 @@ test_that("CreateSubjectTag -With ExtraDVs79", {
 #   expect_equivalent(expected, CreateSubjectTag(ids, generation))
 # })
 # 
-# test_that("CreateSubjectTag -With ExtraDVs79", {
-#   data(ExtraDVs79)
+# test_that("CreateSubjectTag -With ExtraOutcomes79", {
+#   data(ExtraOutcomes79)
 #   
-#   actual <- CreateSubjectTag(subjectID=ExtraDVs79$SubjectID, generation=ExtraDVs79$Generation)
+#   actual <- CreateSubjectTag(subjectID=ExtraOutcomes79$SubjectID, generation=ExtraOutcomes79$Generation)
 #   expected <- ExpectedSubjectTags
 #   
 #   expect_equal(expected, actual)
-#   #cat(PrintVector(ExtraDVs79$SubjectTag))  
+#   #cat(PrintVector(ExtraOutcomes79$SubjectTag))  
 # })
 
 

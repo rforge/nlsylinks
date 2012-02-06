@@ -36,10 +36,10 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
     \item{\code{GenerationSubject2}}{The generation of the second subject.  Values for Gen1 and Gen2 are \code{1} and \code{2}, respectively.}
     \item{\code{Subject1ID}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{Subject2ID}}{The ID value assigned by NLS to the second subject.}
-    \item{\code{MathStandardized_1}}{The PIAT-Math score for Subject1.  See \code{\link{ExtraDVs79}} for more information about its source.}
-    \item{\code{MathStandardized_2}}{The PIAT-Math score for Subject2.  See \code{\link{ExtraDVs79}} for more information about its source.}
-    \item{\code{WeightStandardizedForAge19To25_1}}{The early adult weight for Subject1.  See \code{\link{ExtraDVs79}} for more information about its source.}
-    \item{\code{WeightStandardizedForAge19To25_2}}{The early adult weight for Subject2.  See \code{\link{ExtraDVs79}} for more information about its source.}
+    \item{\code{MathStandardized_1}}{The PIAT-Math score for Subject1.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
+    \item{\code{MathStandardized_2}}{The PIAT-Math score for Subject2.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
+    \item{\code{WeightStandardizedForAge19To25_1}}{The early adult weight for Subject1.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
+    \item{\code{WeightStandardizedForAge19To25_2}}{The early adult weight for Subject2.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
  
   }
 }
@@ -54,7 +54,7 @@ A distinction is made between 'Explicit' and 'Implicit' information.  Explicit i
 
 **Alternate wording that I like less: For example, assume Subject 101, 102, and 103 have the same mother.  And that we are reasonable sure than 101 and 102 are full-siblings, and that 101 and 103 are full-siblings.  If we are comfortable with our level of uncertainty of these two determinations, then we can interpolate/infer that 102 and 103 are full-siblings as well.**
 
-The math and weight scores are duplicated from \code{\link{ExtraDVs79}}, but are included here to make some examples more concise and accessible.
+The math and weight scores are duplicated from \code{\link{ExtraOutcomes79}}, but are included here to make some examples more concise and accessible.
 }
 \source{
 See \code{\link{Links79Pair}}.
