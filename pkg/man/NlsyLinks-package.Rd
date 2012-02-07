@@ -12,7 +12,7 @@ Utilities and kinship information for Behavioral Genetics and Developmental rese
 \tabular{ll}{
 Package: \tab NlsyLinks\cr
 Type: \tab Package\cr
-Version: \tab 0.14\cr
+Version: \tab 0.15\cr
 Date: \tab 2012-02-06\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
@@ -54,5 +54,9 @@ Rodgers, J.L., Rowe, D.C., & Li, C. (1994). Beyond nature versus nurture: DF ana
 This package considers both Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm)}.
 }
 \examples{
-f(x=1, y=5)
+library(NlsyLinks) #Load the package into the current R session.
+data(Links79Pair)  #Load the dataset from the NlsyLinks package.
+summary(Links79Pair)  #Summarize the five variables.
+hist(Links79Pair$R)  #Display a histogram of the Relatedness values.
+table(Links79Pair$R)  #Create a table of the Relatedness values for the whole sample.
 }

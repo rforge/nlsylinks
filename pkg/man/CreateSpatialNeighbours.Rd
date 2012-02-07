@@ -32,7 +32,11 @@ The attribute \code{region.id} specifies each unique SubjectTag.
 The attribue \code{n} specifies the number of unique subjects.
 }
 \references{
-%% ~put references to the literature/web site here ~
+
+Bivand, R., Pebesma, E., & Gomez-Rubio, V. (2008). \emph{Applied Spatial Data Analysis with R.} New York: Springer. (Especially Chapter 9.)
+
+##David, can you please give me some of the articles/books that you used this with?
+
 }
 \author{
 %%  ~~who you are~~
@@ -46,8 +50,7 @@ Notice the British variant of 'neighbo\emph{u}rs'
 \seealso{
 \code{\link{Links79Pair}}
 
-%\pkg{\link{spdep}}
-\code{\link[spdep]{listw2sn}} is a function in the \pkg{spdep} package that uses a \code{spatial.neighbours} object.
+\code{\link[spdep]{listw2sn}}, \code{\link[spdep]{sn2listw}}, \code{\link[spdep]{df2sn}}, \code{\link[spdep]{write.sn2gwt}}, \code{\link[spdep]{write.sn2dat}} are some of the functions in the \pkg{spdep} package that use a \code{spatial.neighbours} object.
 }
 \examples{
 #Need something here
