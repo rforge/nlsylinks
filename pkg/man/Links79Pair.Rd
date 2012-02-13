@@ -13,7 +13,7 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
 }
 \usage{data(Links79Pair)}
 \format{
-  A data frame with 11,075 observations on the following 5 variables.
+  A data frame with 11,075 observations on the following 5 variables.  There is one row per unique pair of subjects, irrespective of order.
   \describe{
     \item{\code{ExtendedID}}{Identity of the extended family of the pair; it corresponds to the HHID in the NLSY79.  See References below.}
     \item{\code{Subject1Tag}}{Identity of the pair's first subject.  See Details below.}

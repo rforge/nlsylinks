@@ -3,17 +3,17 @@
 \alias{NlsyLinks}
 \docType{package}
 \title{
-Utilities and kinship information for Behavioral Genetics and Developmental research using the NLSY.
+Utilities and kinship information for Behavior Genetics and Developmental research using the NLSY.
 }
 \description{
-Utilities and kinship information for Behavioral Genetics and Developmental research using the NLSY.
+Utilities and kinship information for Behavior Genetics and Developmental research using the NLSY.
 }
 \details{
 \tabular{ll}{
 Package: \tab NlsyLinks\cr
 Type: \tab Package\cr
-Version: \tab 0.15\cr
-Date: \tab 2012-02-06\cr
+Version: \tab 0.16\cr
+Date: \tab 2012-02-12\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -51,7 +51,7 @@ Rodgers, J.L., Rowe, D.C., & Li, C. (1994). Beyond nature versus nurture: DF ana
 %~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \note{
-This package considers both Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm)}.
+This package considers both Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm}).
 }
 \examples{
 library(NlsyLinks) #Load the package into the current R session.

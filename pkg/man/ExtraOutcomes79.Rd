@@ -11,7 +11,7 @@ Currently this dataset contains only Gen2 subjects.  However, it soon will inclu
 }
 \usage{data(ExtraOutcomes79)}
 \format{
-  A data frame with 11,495 observations on the following 6 variables.
+  A data frame with 11,495 observations on the following 6 variables.  There is one row per subject.
   \describe{
     \item{\code{SubjectID}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{Generation}}{The generation of the subject.  Values are either 1 or 2, representing Gen1 and Gen2.  Note that this variable is not a \code{factor} (in constrast with data frames like \code{\link{Links79Pair}}).   This dataset is supposed to mimick the dataset provided by the researcher, which typically will not have been converted to a \code{factor}.}

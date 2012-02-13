@@ -14,11 +14,11 @@ CreateSpatialNeighbours79Gen2()
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{linksPairsDoubleEntered}{
-%%     ~~Describe \code{linksPairsDoubleEntered} here~~
-}
+  \item{linksPairsDoubleEntered}{ ## Need something here. ##}
 }
 \details{
+There is one row per unique pair of subjects, \emph{respecting order}.  This is different than \code{\link{Links79Pair}} and \code{\link{Links79PairExpanded}}, which has one row per unique pair of subjects, \emph{irrespective of order}.
+
 \code{CreateSpatialNeighbours79Gen2} automatically creates dataset of NLSY79 Gen2 subjects (i.e., the children of the mothers in the initial NLSY79 sample.
 
 \code{CreateSpatialNeighbours} accepts any paired relationships in a \code{data.frame}, as long as it contains the columns \code{Subject1Tag}, \code{Subject2Tag}, and \code{R}.  See \code{\link{Links79Pair}} for more details.

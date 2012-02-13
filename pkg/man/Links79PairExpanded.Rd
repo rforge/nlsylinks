@@ -13,7 +13,7 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
 }
 \usage{data(Links79PairExpanded)}
 \format{
-  A data frame with 11,075 observations on the following 22 variables.
+  A data frame with 11,075 observations on the following 22 variables.  There is one row per unique pair of subjects, irrespective of order.
   \describe{
     \item{\code{ExtendedID}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{Subject1Tag}}{see the variable of the same name in \code{\link{Links79Pair}}}
