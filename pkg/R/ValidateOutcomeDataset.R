@@ -6,7 +6,7 @@ function( dsOutcome, outcomeNames ) {
   if(!nrow(dsOutcome) > 0 ) stop("The dsOutcome data frame should have at least one row, but does not.")
   
   columnNames <- colnames(dsOutcome)
-  if( !any(columnNames=="SubjectTag") ) stop("The column 'SubjectTag' should exist in the data frame, but does not.")
+  if( !any(columnNames=="SubjectTag") ) stop("The column 'SubjectTag' should exist in the data frame, but does not. See the documentation for the 'CreateSubjectTag' function.")
   if( mode(dsOutcome$SubjectTag) != 'numeric' ) stop("The column 'SubjectTag' should have a 'numeric' mode, but does not.")   
   if( !(all(dsOutcome$SubjectTag > 0)) ) stop("The column 'SubjectTag' should contain only positive values, but does not.")
   if( anyDuplicated(dsOutcome$SubjectTag) > 0 ) stop("The column 'SubjectTag' should not contain duplicated, but it does.")
