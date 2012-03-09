@@ -18,8 +18,13 @@ rm(list=ls(all=TRUE))
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/CreatePairDatasetFixture.R")
 
 rm(list=ls(all=TRUE))
-source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
+#source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/DFFixture.R")
+
+rm(list=ls(all=TRUE))
+#source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
+test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/AceWrapperExceptions.R")
+
 
 rm(list=ls(all=TRUE))
 test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/OutcomeDatasetFixture.R")
