@@ -25,7 +25,7 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
 \details{
 Subjects will be in the same extended family if either: [1] they are Gen1 housemates, [2] they are Gen2 siblings, [3] they are Gen2 cousins (ie, they have mothers who are Gen1 sisters in the NLSY79, [4] they are mother and child (in Gen1 and Gen2, respectively), or [5] they are {aunt|uncle} and {niece|nephew} (in Gen1 and Gen2, respectively).
 
-The variables \code{Subject1Tag} and \code{Subject2Tag} uniquely identify subjects.  For Gen2 subjects, the SubjectTag is identical to their CID (ie, C00001.00 -the SubjectID assigned in the NLSY79-Children files).  However for Gen1 subjects, the SubjectTag is their CaseID (ie, R00001.00), with "00" appended.  This manipulation is necessary to identify subjects uniquely in inter-generational datasets.  A Gen1 subject with an ID of 43 becomes 4300.  The SubjectTags of her four children remain 4301, 4302, 4303, and 4304.
+The variables \code{Subject1Tag} and \code{Subject2Tag} uniquely identify subjects.  For Gen2 subjects, the SubjectTag is identical to their CID (ie, C00001.00 -the SubjectID assigned in the NLSY79-Children files).  However for Gen1 subjects, the SubjectTag is their CaseID (ie, R00001.00), with "00" appended.  This manipulation is necessary to identify subjects uniquely in inter-generational datasets.  A Gen1 subject with an ID of 43 has a \code{SubjectTag} of 4300.  The SubjectTags of her four children remain 4301, 4302, 4303, and 4304.
 
 Level 5 of \code{RelationshipPath} (ie, AuntNiece) is gender neutral.  The relationship could be either Aunt-Niece, Aunt-Nephew, Uncle-Niece, or Uncle-Nephew.  If there's a widely-accepted gender-neutral term, please tell me.
 

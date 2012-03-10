@@ -13,6 +13,7 @@ Currently this dataset contains only Gen2 subjects.  However, it soon will inclu
 \format{
   A data frame with 11,495 observations on the following 6 variables.  There is one row per subject.
   \describe{
+    \item{\code{SubjectTag}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{SubjectID}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{Generation}}{The generation of the subject.  Values are either 1 or 2, representing Gen1 and Gen2.  Note that this variable is not a \code{factor} (in constrast with data frames like \code{\link{Links79Pair}}).   This dataset is supposed to mimick the dataset provided by the researcher, which typically will not have been converted to a \code{factor}.}
     \item{\code{MathStandardized}}{The standardized PIAT math score, with mean 100.}
@@ -27,6 +28,8 @@ Currently this dataset contains only Gen2 subjects.  However, it soon will inclu
 %}
 \source{
 Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}). **Kelly, is this correct? **
+
+The \code{SubjectTag} variable uniquely identify subjects.  For Gen2 subjects, the SubjectTag is identical to their CID (ie, C00001.00 -the SubjectID assigned in the NLSY79-Children files).  However for Gen1 subjects, the SubjectTag is their CaseID (ie, R00001.00), with "00" appended.  This manipulation is necessary to identify subjects uniquely in inter-generational datasets.  A Gen1 subject with an ID of 43 has a \code{SubjectTag} of 4300.  The SubjectTags of her four children remain 4301, 4302, 4303, and 4304.
 
 For Gen2, an NLSY79 variable of \code{MathStandardized} is C00000.00? **Kelly, can you give me an RNum for this? **
 

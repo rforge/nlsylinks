@@ -4,32 +4,41 @@ require(testthat)
 #test_dir("F:/Projects/RDev/NlsyLinksStaging/Static/tests")
 #trace(ValidatePairLinks)
 
+directory <- "F:/Projects/RDev/NlsyLinksStaging/"
+directoryTests <- paste(directory, "Static/inst/tests/", sep="")
+pathToBeIncorporated <- paste(directory, "Content/ToBeIncorporated.R", sep="")
+
+ClearMostVariables <- function( ) {
+  rm(list=ls(all=TRUE)[!(ls(all=TRUE) %in% c("ClearMostVariables", "directoryTests", "pathToBeIncorporated" ))])
+}
 
 try(detach("package:NlsyLinks"), silent=TRUE)
 require(NlsyLinks)
 ?NlsyLinks
 
-source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
+source(pathToBeIncorporated)
 
 #expect_true(FALSE, "AAAAAAAAAAAAAAAAAAAAAAAAAAAA This test should fail during installation or checking?")
 
-rm(list=ls(all=TRUE))
-#source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/CreatePairDatasetFixture.R")
+ClearMostVariables()
+#source(pathToBeIncorporated)
+test_file(paste(directoryTests, "CreatePairDatasetFixture.R", sep=""))
 
-rm(list=ls(all=TRUE))
-#source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/DFFixture.R")
+ClearMostVariables()
+#source(pathToBeIncorporated)
+test_file(paste(directoryTests, "DFFixture.R", sep=""))
 
-rm(list=ls(all=TRUE))
-#source("F:/Projects/RDev/NlsyLinksStaging/Content/ToBeIncorporated.R")
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/AceWrapperExceptions.R")
+ClearMostVariables()
+#source(pathToBeIncorporated)
+test_file(paste(directoryTests, "AceWrapperExceptions.R", sep=""))
 
+ClearMostVariables()
+test_file(paste(directoryTests, "OutcomeDatasetFixture.R", sep=""))
 
-rm(list=ls(all=TRUE))
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/OutcomeDatasetFixture.R")
+ClearMostVariables()
+test_file(paste(directoryTests, "ReadCsvFixture.R", sep=""))
 
-rm(list=ls(all=TRUE))
-source("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/ExpectedVectors.R")
-test_file("F:/Projects/RDev/NlsyLinksStaging/Static/inst/tests/UtilitiesFixture.R")
+ClearMostVariables()
+source(paste(directoryTests, "ExpectedVectors.R", sep=""))
+test_file(paste(directoryTests, "UtilitiesFixture.R", sep=""))
 

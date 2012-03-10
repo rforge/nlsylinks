@@ -56,5 +56,5 @@ Notice the British variant of 'neighbo\emph{u}rs'
 #Need something here
 % R documentation directory.
 }
-\keyword{ Spatial Analysis }
+\keyword{ spatial analysis }
 

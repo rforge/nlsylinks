@@ -35,10 +35,10 @@ test_that("dsOutcome -Missing ", {
   expect_error(ValidateOutcomeDataset( outcomeNames=LoadDefaultOutcomeNames()), "The parameter for 'dsOutcome' should be passed, but was not.")
 })
 
-test_that("SubjectTag -Missing ", {
-  ds <- LoadOutcomeFile()
-  expect_error(ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=LoadDefaultOutcomeNames()), "The column 'SubjectTag' should exist in the data frame, but does not.")
-})
+# test_that("SubjectTag -Missing ", {
+#   ds <- LoadOutcomeFile()
+#   expect_error(ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=LoadDefaultOutcomeNames()), "The column 'SubjectTag' should exist in the data frame, but does not.")
+# })
 
 test_that("SubjectTag -bad mode", {
   ds <- LoadOutcomeFile()
