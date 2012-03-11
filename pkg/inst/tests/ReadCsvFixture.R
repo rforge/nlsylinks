@@ -1,17 +1,6 @@
 
-filePathGen2 <- "F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
+filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
 
-# ###########
-# context("ExtractColumnExists")
-# ###########
-# test_that("Nlsy79Gen2", {
-#   
-#   expectedColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
-#   ds <- read.csv(filePathGen2)
-#   for( expectedColumnName in expectedColumNames ) {
-#     expect_true(ColumnExists(ds, expectedColumnName), paste("The column '", expectedColumnName, "' should be found."))
-#   }
-# })
 
 ###########
 context("Read CSV")

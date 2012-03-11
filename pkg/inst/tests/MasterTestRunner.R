@@ -40,5 +40,5 @@ test_file(paste(directoryTests, "ReadCsvFixture.R", sep=""))
 
 ClearMostVariables()
 source(paste(directoryTests, "ExpectedVectors.R", sep=""))
-test_file(paste(directoryTests, "UtilitiesFixture.R", sep=""))
+test_file(paste(directoryTests, "ColumnUtilitiesFixture.R", sep=""))
 
