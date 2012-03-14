@@ -12,5 +12,5 @@ function( outcomeForSubject1, outcomeForSubject2, relatedness ) {
   b2 <- coeficients["interaction", "Estimate"]
   eSquared <- 1 - (b1+b2)
   
-  return( list(HSquared=b2, CSquared=b1, ESquared=eSquared, RowCount=nDouble) )
+  return( list(ASquared=b2, CSquared=b1, ESquared=eSquared, RowCount=nDouble) )
 }
