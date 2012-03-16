@@ -1,5 +1,6 @@
 rm(list=ls(all=TRUE)) #Clear all the variables before starting a new run.
 
+require(NlsyLinks)
 require(testthat)
 #test_dir("F:/Projects/RDev/NlsyLinksStaging/Static/tests")
 #trace(ValidatePairLinks)
