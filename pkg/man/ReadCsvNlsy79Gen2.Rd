@@ -40,8 +40,8 @@ The function does seven things.
 %}
 \examples{
 ## Not run:
-filePathGen2 <- "F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
-ds <- ReadCsvNlsy79Gen2(filePath=filePathGen2)
+#filePathGen2 <- "F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
+#ds <- ReadCsvNlsy79Gen2(filePath=filePathGen2)
 ## End(Not run)
 }
 
