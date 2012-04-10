@@ -26,15 +26,15 @@ An error is thrown if the vectors \code{subjectID} and \code{generation} are dif
 
 If either input vector has NA values, the respective output element(s) will be NA too.
 }
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 \author{
-%%  ~~who you are~~
+Will Beasley
 }
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 \seealso{
 \code{\link{Links79Pair}}

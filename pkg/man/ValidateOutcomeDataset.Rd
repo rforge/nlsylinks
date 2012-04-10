@@ -30,18 +30,18 @@ The \code{outcomeNames} parameter must:
 Returns \code{TRUE} if the validation passes.
 Returns an error (and associated descriptive message) if it false.
 }
-\references{
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
-\seealso{
+%\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %\code{\link{CreatePairLinks}}
-}
+%}
 \examples{
 ##Need something here
 }

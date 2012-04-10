@@ -29,27 +29,27 @@ A DF analysis requires a double-entered file that contains the \code{R} value fo
 
 \code{CreatePairLinksDoubleEnteredWithNoOutcomes} is intended to be a primarily a helper function for \code{\link{CreateSpatialNeighbours}}.
 }
-\value{
+%\value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
-}
+%}
 \references{
 For more information about a DF analysis, see:
 Rodgers, Joseph Lee, & Kohler, Hans-Peter (2005).  Reformulating and simplifying the DF analysis model.  \href{http://www.springerlink.com/content/n3x1v1q282583366/}{\emph{Behavior Genetics, 35} (2), 211-217}.
 }
 
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+%\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%}
 \examples{
 dsSingleLinks <- data.frame(
   ExtendedID=c(1, 1, 1, 2), 

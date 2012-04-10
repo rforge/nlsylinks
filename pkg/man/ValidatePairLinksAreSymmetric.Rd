@@ -16,18 +16,18 @@ ValidatePairLinksAreSymmetric(linksPair)
 \arguments{
   \item{linksPair}{The \code{\link{data.frame}} object that should be symmetric}
 }
-\details{
+%\details{
 %%  ~~ If necessary, more details than the description above ~~
-}
+%}
 \value{
 Returns \code{TRUE} if symmetric.  Throw an error with \code{\link{stop}} if asymmetric.
 }
 \author{
 Will Beasley
 }
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 

@@ -59,9 +59,9 @@ The math and weight scores are duplicated from \code{\link{ExtraOutcomes79}}, bu
 \source{
 See \code{\link{Links79Pair}}.
 }
-\references{
+%\references{
 %%  ~~ possibly secondary sources and usages ~~
-}
+%}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 data(Links79PairExpanded)  #Load the dataset from the NlsyLinks package.

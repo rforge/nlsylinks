@@ -34,15 +34,15 @@ Rodgers, Joseph Lee, & Kohler, Hans-Peter (2005).  Reformulating and simplifying
 \author{
 Will Beasley
 }
-\note{
+%\note{
 %%  ~~further notes~~
-}
+%}
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
-\seealso{
+%\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
-}
+%}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 dsOutcomes <- ExtraOutcomes79
