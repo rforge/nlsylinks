@@ -4,9 +4,9 @@ require(testthat)
 #test_dir("F:/Projects/RDev/NlsyLinksStaging/Static/tests")
 #trace(ValidatePairLinks)
 
-directory <- "F:/Projects/RDev/NlsyLinksStaging/"
-directoryTests <- paste(directory, "Static/inst/tests/", sep="")
-pathToBeIncorporated <- paste(directory, "Content/ToBeIncorporated.R", sep="")
+directory <- "F:/Projects/RDev/NlsyLinksStaging"
+directoryTests <- file.path(directory, "Static/inst/tests")
+pathToBeIncorporated <- file.path(directory, "Content/ToBeIncorporated.R")
 
 ClearMostVariables <- function( ) {
   rm(list=ls(all=TRUE)[!(ls(all=TRUE) %in% c("ClearMostVariables", "directoryTests", "pathToBeIncorporated" ))])
@@ -20,23 +20,27 @@ source(pathToBeIncorporated)
 
 ClearMostVariables()
 #source(pathToBeIncorporated)
-test_file(paste(directoryTests, "CreatePairDatasetFixture.R", sep=""))
+test_file(file.path(directoryTests, "CreatePairDatasetFixture.R"))
 
 ClearMostVariables()
 #source(pathToBeIncorporated)
-test_file(paste(directoryTests, "DFFixture.R", sep=""))
+test_file(file.path(directoryTests, "DFFixture.R"))
 
 ClearMostVariables()
 #source(pathToBeIncorporated)
-test_file(paste(directoryTests, "AceWrapperExceptions.R", sep=""))
+test_file(file.path(directoryTests, "AceWrapperExceptions.R"))
 
 ClearMostVariables()
-test_file(paste(directoryTests, "OutcomeDatasetFixture.R", sep=""))
+#source(pathToBeIncorporated)
+test_file(file.path(directoryTests, "AceEstimationFixture.R"))
 
 ClearMostVariables()
-test_file(paste(directoryTests, "ReadCsvFixture.R", sep=""))
+test_file(file.path(directoryTests, "OutcomeDatasetFixture.R"))
 
 ClearMostVariables()
-source(paste(directoryTests, "ExpectedVectors.R", sep=""))
-test_file(paste(directoryTests, "ColumnUtilitiesFixture.R", sep=""))
+test_file(file.path(directoryTests, "ReadCsvFixture.R"))
+
+ClearMostVariables()
+source(file.path(directoryTests, "ExpectedVectors.R"))
+test_file(file.path(directoryTests, "ColumnUtilitiesFixture.R"))
 

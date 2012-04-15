@@ -1,5 +1,5 @@
 
-%\VignetteIndexEntry{User manual}
+% \VignetteIndexEntry{ACE Models with the NLSY}
 \documentclass{article}
 \begin{document}
 \end{document}
