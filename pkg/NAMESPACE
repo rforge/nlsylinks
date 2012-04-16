@@ -3,5 +3,3 @@ exportPattern("^[[:alpha:]]+")
 
 exportClass(AceEstimate)
 exportClassPattern("^[[:alpha:]]+")
-
-exportMethods(getEstimate)

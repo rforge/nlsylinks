@@ -3,28 +3,83 @@
 ###########
 context("Ace Estimation")
 ###########
-test_that("AceUnivariate -NULL method", {
-  #CreateAceEstimate(.5, .2, .1, 4)
-#   dsOutcomes <- ExtraOutcomes79
-#   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-#   dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
-#   
-#   expect_error(
-#     AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method=NULL),
-#     "The method argument must contain exactly one element when calling the AceUnivariate function.  It contained 0 elements."
-#   )
+test_that("CreateAceEstimate -Plain", {
+  aSquared <- .5
+  cSquared  <- .3
+  eSquared <- .2
+  caseCount <- 20
+  
+  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
+  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
+  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
+  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
+  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
+  expect_true(object=slot(est, "Unity"))
+  expect_true(object=slot(est, "WithinBounds"))
+})
+test_that("CreateAceEstimate -Not Unity", {
+  aSquared <- .5
+  cSquared  <- .2
+  eSquared <- .1
+  caseCount <- 20
+  
+  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
+  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
+  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
+  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
+  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
+  expect_false(object=slot(est, "Unity"))
+  expect_true(object=slot(est, "WithinBounds"))
+})
+test_that("CreateAceEstimate -Outside bounds", {
+  aSquared <- .7
+  cSquared  <- .5
+  eSquared <- -.2
+  caseCount <- 20
+  
+  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
+  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
+  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
+  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
+  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
+  expect_true(object=slot(est, "Unity"))
+  expect_false(object=slot(est, "WithinBounds"))
+})
+test_that("CreateAceEstimate -Outside bounds & no unity", {
+  aSquared <- .4
+  cSquared  <- .5
+  eSquared <- -.2
+  caseCount <- 20
+  
+  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
+  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
+  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
+  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
+  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
+  expect_false(object=slot(est, "Unity"))
+  expect_false(object=slot(est, "WithinBounds"))
 })
 
-aSquared <- .5
-cSquared  <- .2
-eSquared <-.1
-caseCount <- 20
-componentSum <- aSquared + cSquared + eSquared
-#print(class(caseCount))
+# aSquared <- .5
+# cSquared  <- .2
+# eSquared <- .1
+# caseCount <- 20
+# componentSum <- aSquared + cSquared + eSquared
+# #print(class(caseCount))
+# 
+# unity <- ( abs(componentSum - 1.0) < 0 )
+# withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
+# est <-new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) 
+# est@ASquared
+# est
+# show(est)
+# print(est)
+# 
+# est2 <- CreateAceEstimate(.5, .2, .1, 4)
+# est2@ASquared
+# est2
+# showClass("AceEstimate")
 
-unity <- ( abs(componentSum - 1.0) < 0 )
-withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
-est <-new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) 
-est@ASquared
-est
-showClass("AceEstimate")
+# showMethods(GetEstimate)
+# showMethods(print)
+# showMethods(show)
