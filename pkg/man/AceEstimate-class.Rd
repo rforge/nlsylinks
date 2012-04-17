@@ -27,7 +27,7 @@ Objects can be created by calls of the form \code{new("AceEstimate", aSquared, c
 }
 \section{Methods}{
   \describe{
-    \item{GetEstimate}{\code{signature(object = "AceEstimate")}: ... }
+    %\item{GetEstimate}{\code{signature(object = "AceEstimate")}: ... }
     \item{initialize}{\code{signature(.Object = "AceEstimate")}: ... }
     \item{print}{\code{signature(x = "AceEstimate")}: ... }
     \item{show}{\code{signature(object = "AceEstimate")}: ... }
@@ -49,8 +49,9 @@ Objects can be created by calls of the form \code{new("AceEstimate", aSquared, c
 %%  ~~objects to See Also as \code{\link{~~fun~~}}, ~~~
 %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
 %}
-%\examples{
+\examples{
 %require(NlsyLinks)
-%showClass("AceEstimate")
-%}
+showClass("AceEstimate")
+
+}
 \keyword{classes}

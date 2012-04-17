@@ -1,0 +1,35 @@
+﻿
+(Upcoming) Version 0.25 (2012-04-17)
+------------------------------------------------------------------------------
+
+New Features:
+* 'lavaan' package uses a multigroup method for the AceUnivariate function.
+
+Version 0.24 (2012-04-16)
+------------------------------------------------------------------------------
+
+New Features:
+* The S4 class 'AceEstimate' is returned by the 'Ace' function. 
+* Methods & functions associated with the AceEstimate class.
+* SubjectDetails79 dataset for Gen2.
+* ReadCsvNlsy79 function.  
+* Validation functions: (a) OutComeDataset
+* Column Utilities: (a) VerifyColumnExists, (c) RenameNlsyColumn
+
+Version 0.19 (2012-03-10)
+------------------------------------------------------------------------------
+
+New Features:
+* NLS Investigator vignette
+* ACE vignette
+* Generalized AceUnivariate function that wraps DeFriesFulkerMethod1 and DeFriesFulkerMethod3.
+* ExtraOutcomes79 dataset
+* Links79PairExpanded dataset
+* Validation functions: (a) OutcomeDataset, (b) PairLinks, (c) PairLinksAreSymmetric
+* Create functions for (a) SpatialNeighbours, (b) PairLinks, (c) SubjectTag
+
+
+Version 0.10 (2012-01-16)
+------------------------------------------------------------------------------
+* Initial submission to CRAN
+* Contains Nlsy79 Gen2 sibling links

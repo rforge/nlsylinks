@@ -44,3 +44,6 @@ ClearMostVariables()
 source(file.path(directoryTests, "ExpectedVectors.R"))
 test_file(file.path(directoryTests, "ColumnUtilitiesFixture.R"))
 
+#expect_that(print("sss"), prints_text("sss"))
+#expect_that(message("a"), shows_message("a"))
+

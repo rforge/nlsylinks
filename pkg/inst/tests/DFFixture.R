@@ -13,16 +13,21 @@ test_that("DFMethod1 -MathStandardized", {
   expectedRowCount <- 16588
   
   actual <- DeFriesFulkerMethod1(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
+  #expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method="DeFriesFulkerMethod1")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod1 -Weight", {
@@ -35,16 +40,20 @@ test_that("DFMethod1 -Weight", {
   expectedRowCount <- 13942
   
   actual <- DeFriesFulkerMethod1(outcomeForSubject1=dsDF$Weight_1, outcomeForSubject2=dsDF$Weight_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$Weight_1, outcomeForSubject2=dsDF$Weight_2, relatedness=dsDF$R, method="DeFriesFulkerMethod1")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod1 -WeightStandardized", {
@@ -57,16 +66,20 @@ test_that("DFMethod1 -WeightStandardized", {
   expectedRowCount <- 13942
   
   actual <- DeFriesFulkerMethod1(outcomeForSubject1=dsDF$WeightStandardized_1, outcomeForSubject2=dsDF$WeightStandardized_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$WeightStandardized_1, outcomeForSubject2=dsDF$WeightStandardized_2, relatedness=dsDF$R, method="DeFriesFulkerMethod1")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod1 -WeightStandardizedAdult", {
@@ -79,16 +92,20 @@ test_that("DFMethod1 -WeightStandardizedAdult", {
   expectedRowCount <- 6956
   
   actual <- DeFriesFulkerMethod1(outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, relatedness=dsDF$R, method="DeFriesFulkerMethod1")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 
@@ -105,16 +122,21 @@ test_that("DFMethod3 -MathStandardized", {
   expectedRowCount <- 16588
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_true(object=slot(actual, "WithinBounds"))
+  #expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method="DeFriesFulkerMethod3")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_true(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod3 -Weight", {
@@ -127,16 +149,20 @@ test_that("DFMethod3 -Weight", {
   expectedRowCount <- 13942
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$Weight_1, outcomeForSubject2=dsDF$Weight_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$Weight_1, outcomeForSubject2=dsDF$Weight_2, relatedness=dsDF$R, method="DeFriesFulkerMethod3")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)    
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)   
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod3 -WeightStandardized", {
@@ -149,16 +175,20 @@ test_that("DFMethod3 -WeightStandardized", {
   expectedRowCount <- 13942
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$WeightStandardized_1, outcomeForSubject2=dsDF$WeightStandardized_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_false(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$WeightStandardized_1, outcomeForSubject2=dsDF$WeightStandardized_2, relatedness=dsDF$R, method="DeFriesFulkerMethod3")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_false(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 test_that("DFMethod3 -WeightStandardizedAdult", {
@@ -171,16 +201,20 @@ test_that("DFMethod3 -WeightStandardizedAdult", {
   expectedRowCount <- 6956
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, relatedness=dsDF$R)
-  expect_equal(object=actual$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actual$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)  
-  expect_equal(object=actual$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actual, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)  
+  expect_equal(object=slot(actual, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actual, "Unity"))
+  expect_true(object=slot(actual, "WithinBounds"))
   
   actualFromWrapper <- AceUnivariate(outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, relatedness=dsDF$R, method="DeFriesFulkerMethod3")
-  expect_equal(object=actualFromWrapper$ASquared, expected=expectedASquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$CSquared, expected=expectedCSquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$ESquared, expected=expectedESquared, tolerance=1e-6, scale=1)
-  expect_equal(object=actualFromWrapper$RowCount, expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CSquared"), expected=expectedCSquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "ESquared"), expected=expectedESquared, tolerance=1e-6, scale=1)
+  expect_equal(object=slot(actualFromWrapper, "CaseCount"), expected=expectedRowCount, tolerance=1e-6, scale=1)
+  expect_true(object=slot(actualFromWrapper, "Unity"))
+  expect_true(object=slot(actualFromWrapper, "WithinBounds"))
 })
 
 

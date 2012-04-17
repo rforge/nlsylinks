@@ -60,25 +60,42 @@ test_that("CreateAceEstimate -Outside bounds & no unity", {
   expect_false(object=slot(est, "WithinBounds"))
 })
 
+test_that("print AceEstimate shows something", {
+  est <- CreateAceEstimate(aSquared=.5, cSquared= .2, eSquared= .4, caseCount=4)
+  expect_that(print(est), prints_text(regexp="[:alnum:]"))
+})
+
+test_that("show AceEstimate shows something", {
+  est <- CreateAceEstimate(aSquared=.5, cSquared= .2, eSquared= .1, caseCount=4)
+  expect_that(est, prints_text(regexp="[:alnum:]"))
+})
+
+# 
 # aSquared <- .5
 # cSquared  <- .2
 # eSquared <- .1
 # caseCount <- 20
 # componentSum <- aSquared + cSquared + eSquared
-# #print(class(caseCount))
-# 
 # unity <- ( abs(componentSum - 1.0) < 0 )
 # withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
-# est <-new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) 
-# est@ASquared
-# est
-# show(est)
-# print(est)
-# 
+# # est <-new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) 
+# # est@ASquared
+# # est
+# # show(est)
+# # print(est)
+# # 
 # est2 <- CreateAceEstimate(.5, .2, .1, 4)
-# est2@ASquared
-# est2
-# showClass("AceEstimate")
+# # est2@ASquared
+# # est2
+# # show(est2)
+# # # showClass("AceEstimate")
+# 
+# expect_that(print(est2), prints_text(regexp="[:alnum:]"))
+#           
+# expect_that(message(print(est2)), shows_message())
+# expect_output(print(est2))
+# expect_that(print(est2), prints_text())
+# expect_that(print(est2), prints_text("\"Results of ACE estimation: [show]\"\nASquared  CSquared  ESquared CaseCount\n0.5       0.2       0.1       4.0)"))
 
 # showMethods(GetEstimate)
 # showMethods(print)
