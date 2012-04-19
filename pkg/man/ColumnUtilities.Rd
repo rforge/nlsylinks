@@ -1,5 +1,6 @@
 \name{ColumnUtilities}
 \alias{VerifyColumnExists}
+\alias{RenameColumn}
 \alias{RenameNlsyColumn}
 
 \title{
@@ -10,6 +11,7 @@ A collection of functions that helps data management \code{data.frame}s, particu
 }
 \usage{
 VerifyColumnExists( dataFrame, columnName )
+RenameColumn( dataFrame, oldColumnName, newColumnName )
 RenameNlsyColumn( dataFrame, nlsyRNumber, newColumnName )
 }
 
@@ -17,6 +19,7 @@ RenameNlsyColumn( dataFrame, nlsyRNumber, newColumnName )
   \item{dataFrame}{A \code{data.frame} object whose columns are to be verified or renamed.}
   \item{columnName}{The name of the column to verify is present in the \code{data.frame}.}
   \item{nlsyRNumber}{The name of the column to change. }
+  \item{oldColumnName}{The name of the column to change. }
   \item{newColumnName}{The desired name of the column.}
 }
 \details{
@@ -26,7 +29,7 @@ The RNumber assigned by the NLS has a pattern.  In the Nlsy79 Gen1 dataset, the 
 In the NLS Investigator, a decimal is present in the RNumber (eg, R00001.00).  When the Investigator saves the dataset as a CSV, the decimal is removed (R0000100).
 }
 \value{
-*IMPORTANT* The \code{RenameNlsyColumn} does not use side-effects to rename the \code{data.frame}.  Instead, it returns a new \code{data.frame}.  In the example below, notice the assignment to \code{ds}: \code{ds <- RenameNlsyColumn(...)}.
+*IMPORTANT* The \code{RenameColumn} and \code{RenameNlsyColumn} functions do not use side-effects to rename the \code{data.frame}.  Instead, it returns a new \code{data.frame}.  In the example below, notice the assignment to \code{ds}: \code{ds <- RenameNlsyColumn(...)}.
 
 
 The \code{VerifyColumnExists} function check that exactly one column exists with the specified \code{columnName}.  If so, the index of the column is returned.  If not, an exception is thrown.

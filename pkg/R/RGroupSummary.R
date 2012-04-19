@@ -1,0 +1,51 @@
+RGroupSummary <-
+function( ds, m1Name, m2Name, rName="R") {
+  #   ds <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+  #   m1Name <- "MathStandardized_1" #Stands for Manifest1
+  #   m2Name <- "MathStandardized_2" #Stands for Manifest2
+  
+  #   ds <-dsFull
+  #   rName <- "RRR"
+  
+  rLevelsFirstPass <- sort(unique(ds[,rName])) #Enumerate the values of R existing in the current data.frame.
+  determinantThreshold <- 0 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
+  dsGroupSummary <- data.frame(R=rLevelsFirstPass, Included=F, PairCount=NA, M1Variance=NA, M2Variance=NA, M1M2Covariance=NA, Correlation=NA, Determinant=NA, PosDefinite=FALSE)
+  #RenameColumn (dsGroupSummary)[1] <- rName
+  
+  index <- VerifyColumnExists(dataFrame=dsGroupSummary, columnName="R")
+  colnames(dsGroupSummary)[index] <- rName
+  
+  #The primary goal of this loop is to identify the R groups whose covariance matrix isn't positive definite.
+  for( rLevel in rLevelsFirstPass ) {
+    #print(rLevel)
+    dsGroupSlice <- ds[!is.na(ds[,rName]) & ds[,rName]==rLevel & !is.na(ds[, m1Name]) & !is.na(ds[, m2Name]), c(m1Name, m2Name)]
+    
+    if( nrow(dsGroupSlice) > 0 ) {
+      groupCovarianceMatrix <- cov(dsGroupSlice)#, use="complete.obs") 
+      determinant <- det(groupCovarianceMatrix)
+      isPositiveDefinite <- (determinant > determinantThreshold)
+      correlation <- cor(dsGroupSlice[, m1Name], dsGroupSlice[, m2Name])
+    }
+    else {
+      groupCovarianceMatrix <- matrix(NA, ncol=2, nrow=2)
+      determinant <- NA
+      isPositiveDefinite <- F
+      correlation <- NA
+    }
+    
+    dsGroupSummary[dsGroupSummary[,rName]==rLevel, c("PairCount", "M1Variance", "M2Variance", "M1M2Covariance", "Correlation", "Determinant", "PosDefinite")] <- c(
+      nrow(dsGroupSlice),
+      groupCovarianceMatrix[1, 1],
+      groupCovarianceMatrix[2, 2],
+      groupCovarianceMatrix[1, 2],
+      correlation,
+      determinant,
+      isPositiveDefinite
+      )    
+    #dsGroupSummary[dsGroupSummary[,rName]==rLevel, "Included"] <- isPositiveDefinite  
+  }
+  dsGroupSummary$PosDefinite <- as.logical(dsGroupSummary$PosDefinite) #I do not know how this variable was ever coerced from logical to numeric.
+  dsGroupSummary[, "Included"] <- dsGroupSummary$PosDefinite #Maybe later there will be another criterion to include/exclude a group.
+  
+  return( dsGroupSummary )
+}

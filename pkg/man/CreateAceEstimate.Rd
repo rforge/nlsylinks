@@ -15,9 +15,7 @@ CreateAceEstimate(aSquared, cSquared, eSquared, caseCount, unityTolerance = 1e-1
   \item{aSquared}{The proportion of variability due to a shared genetic influence (typically represented as a^2, or sometimes h^2).}
   \item{cSquared}{The proportion of variability due to shared common environmental influence.}
   \item{eSquared}{The proportion of variability due to unexplained/residual/error influence.}
-  \item{caseCount}{
-%%     ~~Describe \code{caseCount} here~~
-}
+  \item{caseCount}{The number of cases used to estimate the model.}
   \item{unityTolerance}{
 %%     ~~Describe \code{unityTolerance} here~~
 }

@@ -50,8 +50,11 @@ Objects can be created by calls of the form \code{new("AceEstimate", aSquared, c
 %%  ~~or \code{\linkS4class{CLASSNAME}} for links to other classes ~~~
 %}
 \examples{
-%require(NlsyLinks)
+library(NlsyLinks) #Load the package into the current R session.
 showClass("AceEstimate")
+est <- CreateAceEstimate(.5, .2, .3, 40)
+est 
+print(est)
 
 }
 \keyword{classes}
