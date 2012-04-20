@@ -9,7 +9,7 @@ This function uses the \pkg{lavaan} package to estimate a univariate ACE model, 
 }
 \usage{
 AceLavaanGroup(dsClean, rLevels, m1Name, m2Name, rName="R", 
-  estimateA=TRUE, estimateC=TRUE)
+  estimateA=TRUE, estimateC=TRUE, printOutput=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -20,6 +20,7 @@ AceLavaanGroup(dsClean, rLevels, m1Name, m2Name, rName="R",
   \item{rName}{The name of the variable containing the \code{R} value.}
   \item{estimateA}{Should the \emph{A} variance component be estimated?  A^2 represents the proportion of variability due to a shared genetic influence.}
   \item{estimateC}{Should the \emph{C} variance component be estimated?  C^2 represents the proportion of variability due to a shared environmental influence.}
+  \item{printOutput}{Indicates if the estimated parameters and fit statistics are printed to the console.}
 }
 \details{
 The variance component for \emph{E} is always estimated.
@@ -51,13 +52,26 @@ dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
 rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
 dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, m1Name=m1Name, m2Name=m2Name)
 
-#ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
-#ace
+ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
+ace
 
 #Should produce:
 # [1] "Results of ACE estimation: [show]"
 #     ASquared     CSquared     ESquared    CaseCount 
 #    0.6701032    0.1167060    0.2131907 8292.0000000
+
+library(lavaan) #Load the lavaan package to access lavaan-specific functions
+GetDetails(ace)
+
+#Exmaine fit stats like Chi-Squared, RMSEA, CFI, etc.
+fitMeasures(GetDetails(ace)$lavaan)
+
+#Examine low-level details like each group's individual parameter estimates and standard errors.
+summary(GetDetails(ace)$lavaan)
+
+#Extract low-level details. This may be useful when programming simulations.
+inspect(GetDetails(ace)$lavaan, what="converged")
+inspect(GetDetails(ace)$lavaan, what="coef")
 }
 \keyword{ ACE }
 

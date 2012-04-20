@@ -1,5 +1,5 @@
 AceLavaanGroup <-
-function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC=TRUE) {
+function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
 #   require(lavaan)
 #   require(stringr)
  
@@ -58,7 +58,7 @@ function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC
   
   #Run the model and review the results
   fit <- lavaan::lavaan(model, data=dsClean, group="GroupID", missing="listwise", information="observed")
-  lavaan::summary(fit)
+  if( printOutput ) lavaan::summary(fit)
   #lavaanify(model) #lavaanify(modelA)
   #parseModelString(modelA)
   #lavaanNames(modelA)
@@ -66,7 +66,7 @@ function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC
   #parameterEstimates(fit)
   #inspect(fit)
   #names(fitMeasures(fit)) #str(fitMeasures(fit)[c("chisq", "df")])
-  print(paste("Chi Square: ", lavaan::fitMeasures(fit)[["chisq"]])) #Print the Chi Square value
+  if( printOutput ) print(paste("Chi Square: ", lavaan::fitMeasures(fit)[["chisq"]])) #Print the Chi Square value
   
   #Extract the UNSCALED ACE components.
   a2 <- subset(lavaan::parameterEstimates(fit), label=="a2", select="est")[1, 1]
@@ -84,9 +84,10 @@ function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC
   #   layer(geom="line") + layer(geom="text") + scale_x_reverse(limits=c(1,0))
   
   components <- as.numeric(cbind(a2, c2, e2)[1,] / (a2 + c2 + e2)) #The 'as.numeric' gets rid of the vector labels.
-  print(components) #Print the unity-SCALED ace components.
+  if( printOutput ) print(components) #Print the unity-SCALED ace components.
   caseCount <- nrow(dsClean)
+  details <- list(lavaan=fit)
   #print(paste("R Levels excluded:",  stringr::str_c(rLevelsToExclude, collapse=", "), "; R Levels retained:", rString)) #Print the dropped & retained groups.
-  ace <- CreateAceEstimate(aSquared=components[1], cSquared=components[2], eSquared=components[3], caseCount=caseCount)
+  ace <- CreateAceEstimate(aSquared=components[1], cSquared=components[2], eSquared=components[3], caseCount=caseCount, details=details)
   return( ace )
 }

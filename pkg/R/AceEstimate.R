@@ -1,5 +1,5 @@
 
-setClass(Class="AceEstimate", 
+methods::setClass(Class="AceEstimate", 
   representation=representation(
     ASquared ="numeric",
     CSquared ="numeric",
@@ -7,7 +7,8 @@ setClass(Class="AceEstimate",
     CaseCount="numeric",
     #CaseCount="integer",
     Unity="logical", 
-    WithinBounds="logical"
+    WithinBounds="logical",
+    Details="list"
   ),
   validity=function( object ) { 
     #print( object@ASquared )
@@ -15,9 +16,9 @@ setClass(Class="AceEstimate",
   }
 )
 
-setMethod( f="initialize", 
+methods::setMethod( f="initialize", 
   signature=signature(.Object = "AceEstimate"), # signature="AceEstimate",
-  definition=function(.Object, aSquared, cSquared, eSquared, caseCount, unity, withinBounds, ...) {
+  definition=function(.Object, aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details, ...) {
     if( missing(eSquared) ) eSquared <- 1 - (aSquared + cSquared)    
     #print(missing(caseCount))
     #if( is.na(caseCount) ) caseCount <- 444
@@ -28,6 +29,7 @@ setMethod( f="initialize",
     .Object@CaseCount <- caseCount
     .Object@Unity <- unity
     .Object@WithinBounds <- withinBounds
+    .Object@Details <- details
     return( .Object )
     #callNextMethod(.Object, ASquared=aSquared, CSquared=cSquared, ESquared=eSquared, CaseCount=caseCount, Unity=unity, WithinBounds=withinBounds,...)
   }
@@ -36,7 +38,7 @@ setMethod( f="initialize",
 
 
 
-CreateAceEstimate <- function( aSquared, cSquared, eSquared, caseCount, unityTolerance=1e-11 ) {
+CreateAceEstimate <- function( aSquared, cSquared, eSquared, caseCount, details=list(), unityTolerance=1e-11 ) {
   componentSum <- aSquared + cSquared + eSquared
   #print(class(caseCount))
   if( missing(caseCount) ) stop("The argument 'caseCount' is missing.")
@@ -44,10 +46,10 @@ CreateAceEstimate <- function( aSquared, cSquared, eSquared, caseCount, unityTol
   
   unity <- ( abs(componentSum - 1.0) < unityTolerance )
   withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
-  return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) )  
+  return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details) )  
 }
 
-setMethod(f="print", "AceEstimate", function( x, ... ) {
+methods::setMethod(f="print", "AceEstimate", function( x, ... ) {
   #print("ACE Estimates: [print]")#\n")
   #aceDisplay <- matrix(c("ASquared", "CSquared", "ESquared", slot(x, "ASquared"), slot(x, "CSquared"), slot(x, "ESquared")), byrow=T, nrow=2)
   #cat(aceDisplay, "\n")
@@ -58,11 +60,23 @@ setMethod(f="print", "AceEstimate", function( x, ... ) {
       c(ASquared=slot(x, "ASquared"), CSquared=slot(x, "CSquared"), ESquared=slot(x, "ESquared"), CaseCount=slot(x,"CaseCount")))
 })
 
-setMethod(f="show", "AceEstimate", function( object ) {
+methods::setMethod(f="show", "AceEstimate", function( object ) {
   print("Results of ACE estimation: [show]")#\n")
   #print(c(GetEstimate(object), CaseCount=slot(object, "CaseCount")))
   print(c(ASquared=slot(object, "ASquared"), CSquared=slot(object, "CSquared"), ESquared=slot(object, "ESquared"), CaseCount=slot(object,"CaseCount")))
 })
+
+methods::setGeneric("GetDetails", function( object ) { standardGeneric("GetDetails") })
+methods::setMethod(f="GetDetails", "AceEstimate", 
+  definition=function( object ) {
+    #print(str(object))
+    return( slot(object, "Details") )
+  }
+)
+
+
+
+
 # setMethod("summary", "Ace", function(x, ...) {
 #   cat("Results of ACE estimation:\n")
 #   #aceDisplay <- matrix(c("ASquared", "CSquared", "ESquared", slot(x, "ASquared"), slot(x, "CSquared"), slot(x, "ESquared")), byrow=T, nrow=2)

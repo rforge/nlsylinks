@@ -1,5 +1,5 @@
 CreateAceEstimate <-
-function( aSquared, cSquared, eSquared, caseCount, unityTolerance=1e-11 ) {
+function( aSquared, cSquared, eSquared, caseCount, details=list(), unityTolerance=1e-11 ) {
   componentSum <- aSquared + cSquared + eSquared
   #print(class(caseCount))
   if( missing(caseCount) ) stop("The argument 'caseCount' is missing.")
@@ -7,5 +7,5 @@ function( aSquared, cSquared, eSquared, caseCount, unityTolerance=1e-11 ) {
   
   unity <- ( abs(componentSum - 1.0) < unityTolerance )
   withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
-  return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) )  
+  return( new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details) )  
 }

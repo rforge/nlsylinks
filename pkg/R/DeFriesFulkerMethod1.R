@@ -1,6 +1,7 @@
 DeFriesFulkerMethod1 <-
 function( outcomeForSubject1, outcomeForSubject2, relatedness ) {   
-  brief <- summary(lm(outcomeForSubject1 ~ 1 + outcomeForSubject2 + relatedness + outcomeForSubject2*relatedness))
+  lmDetails <- lm(outcomeForSubject1 ~ 1 + outcomeForSubject2 + relatedness + outcomeForSubject2*relatedness)
+  brief <- summary(lmDetails)
   coeficients <- coef(brief)
   nDouble <- length(brief$residuals) 
   #b0 <- coeficients["(Intercept)", "Estimate"]
@@ -9,7 +10,8 @@ function( outcomeForSubject1, outcomeForSubject2, relatedness ) {
   b3 <- coeficients["outcomeForSubject2:relatedness", "Estimate"]
   eSquared <- 1 - (b1+b3)
   
-  aceEstimate <- CreateAceEstimate(aSquared=b3, cSquared=b1, eSquared=eSquared, caseCount=nDouble)
+  details <- list(lm=lmDetails)
+  aceEstimate <- CreateAceEstimate(aSquared=b3, cSquared=b1, eSquared=eSquared, caseCount=nDouble, details=details)
   return( aceEstimate )
   #return( list(ASquared=b3, CSquared=b1, ESquared=eSquared, RowCount=nDouble) )
 }

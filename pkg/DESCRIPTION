@@ -5,8 +5,7 @@ Version: 0.25
 Date: 2012-04-20
 Author: Will Beasley, Joe Rodgers, David Bard, and Kelly Meredith
 Maintainer: Will Beasley <wibeasley@hotmail.com>
-Depends: methods
-Imports: lavaan, stringr 
+Imports: methods, lavaan, stringr 
 Suggests: ggplot2
 Description: Utilities and kinship information for Behavioral Genetics and Developmental research using the NLSY.
 License: GPL
