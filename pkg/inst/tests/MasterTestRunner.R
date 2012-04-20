@@ -19,7 +19,10 @@ require(NlsyLinks)
 source(pathToBeIncorporated)
 
 ClearMostVariables()
-source(pathToBeIncorporated)
+test_file(file.path(directoryTests, "LavaanGroupFixture.R"))
+
+ClearMostVariables()
+#source(pathToBeIncorporated)
 test_file(file.path(directoryTests, "AcePreparationFixture.R"))
 
 ClearMostVariables()

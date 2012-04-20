@@ -12,8 +12,8 @@ Utilities and kinship information for Behavior Genetics and Developmental resear
 \tabular{ll}{
 Package: \tab NlsyLinks\cr
 Type: \tab Package\cr
-Version: \tab 0.24\cr
-Date: \tab 2012-04-17\cr
+Version: \tab 0.25\cr
+Date: \tab 2012-04-20\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -22,7 +22,7 @@ An overview of how to use the package, including the most important functions
 \author{
 Will Beasley, Joe Rodgers, Kelly Meredith, and David Bard
 
-Maintainer: Will  Beasley <wibeasley@hotmail.com>
+Maintainer: Will Beasley <wibeasley@hotmail.com>
 }
 \references{
 This package's development was largely supported by the NIH Grant 1R01HD65865, "NLSY Kinship Links: Reliable and Valid Sibling Identification" (PI: Joe Rodgers)

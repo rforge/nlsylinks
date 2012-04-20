@@ -1,102 +1,57 @@
-
+require(stringr)
 
 ###########
 context("Lavaan")
 ###########
-test_that("CreateAceEstimate -Plain", {
-  aSquared <- .5
-  cSquared  <- .3
-  eSquared <- .2
-  caseCount <- 20
+test_that("AceLavaanGroup -MathStandardized", {
+  dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+  m1Name <- "MathStandardized_1" #Stands for Manifest1
+  m2Name <- "MathStandardized_2" #Stands for Manifest2
   
-  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
-  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
-  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
-  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
-  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
-  expect_true(object=slot(est, "Unity"))
-  expect_true(object=slot(est, "WithinBounds"))
-})
-test_that("CreateAceEstimate -Not Unity", {
-  aSquared <- .5
-  cSquared  <- .2
-  eSquared <- .1
-  caseCount <- 20
+  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, m1Name=m1Name, m2Name=m2Name)
   
-  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
-  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
-  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
-  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
-  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
-  expect_false(object=slot(est, "Unity"))
-  expect_true(object=slot(est, "WithinBounds"))
-})
-test_that("CreateAceEstimate -Outside bounds", {
-  aSquared <- .7
-  cSquared  <- .5
-  eSquared <- -.2
-  caseCount <- 20
+  ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
   
-  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
-  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
-  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
-  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
-  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
-  expect_true(object=slot(est, "Unity"))
-  expect_false(object=slot(est, "WithinBounds"))
-})
-test_that("CreateAceEstimate -Outside bounds & no unity", {
-  aSquared <- .4
-  cSquared  <- .5
-  eSquared <- -.2
-  caseCount <- 20
-  
-  est <- CreateAceEstimate(aSquared, cSquared, eSquared, caseCount)
-  expect_equal(object=slot(est, "ASquared"), expected=aSquared, scale=1)
-  expect_equal(object=slot(est, "CSquared"), expected=cSquared, scale=1)
-  expect_equal(object=slot(est, "ESquared"), expected=eSquared, scale=1)
-  expect_equal(object=slot(est, "CaseCount"), expected=caseCount, scale=1)
-  expect_false(object=slot(est, "Unity"))
-  expect_false(object=slot(est, "WithinBounds"))
+  expectedASquared <- 0.670103215171409
+  expectedCSquared  <- 0.11670604326754
+  expectedESquared <- 0.213190741561051
+  expectedCaseCount <- 8292
+    
+  expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
+  expect_equal(object=ace@CSquared, expected=expectedCSquared, scale=1)
+  expect_equal(object=ace@ESquared, expected=expectedESquared, scale=1)
+  expect_equal(object=ace@CaseCount, expected=expectedCaseCount, scale=1)
+  expect_equal(object=slot(ace, "CaseCount"), expected=expectedCaseCount, scale=1)
+  expect_true(object=slot(ace, "Unity"))
+  expect_true(object=slot(ace, "WithinBounds"))
 })
 
-test_that("print AceEstimate shows something", {
-  est <- CreateAceEstimate(aSquared=.5, cSquared= .2, eSquared= .4, caseCount=4)
-  expect_that(print(est), prints_text(regexp="[:alnum:]"))
+test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
+  dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+  m1Name <- "WeightStandardizedForAge19To25_1"
+  m2Name <- "WeightStandardizedForAge19To25_2"
+  
+  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, m1Name=m1Name, m2Name=m2Name)
+  
+  ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
+  
+  expectedASquared <- 0.687801119966999
+  expectedCSquared  <- 7.10884537223939e-15
+  expectedESquared <- 0.312198880032994
+  expectedCaseCount <- 3478
+  
+  expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
+  expect_equal(object=ace@CSquared, expected=expectedCSquared, scale=1)
+  expect_equal(object=ace@ESquared, expected=expectedESquared, scale=1)
+  expect_equal(object=ace@CaseCount, expected=expectedCaseCount, scale=1)
+  expect_true(object=slot(ace, "Unity"))
+  expect_true(object=slot(ace, "WithinBounds"))
 })
-
-test_that("show AceEstimate shows something", {
-  est <- CreateAceEstimate(aSquared=.5, cSquared= .2, eSquared= .1, caseCount=4)
-  expect_that(est, prints_text(regexp="[:alnum:]"))
-})
-
-# 
-# aSquared <- .5
-# cSquared  <- .2
-# eSquared <- .1
-# caseCount <- 20
-# componentSum <- aSquared + cSquared + eSquared
-# unity <- ( abs(componentSum - 1.0) < 0 )
-# withinBounds <- (0 <= min(aSquared, cSquared, eSquared)) && (max( aSquared, cSquared, eSquared) <= 1)
-# # est <-new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds) 
-# # est@ASquared
-# # est
-# # show(est)
-# # print(est)
-# # 
-# est2 <- CreateAceEstimate(.5, .2, .1, 4)
-# # est2@ASquared
-# # est2
-# # show(est2)
-# # # showClass("AceEstimate")
-# 
-# expect_that(print(est2), prints_text(regexp="[:alnum:]"))
-#           
-# expect_that(message(print(est2)), shows_message())
-# expect_output(print(est2))
-# expect_that(print(est2), prints_text())
-# expect_that(print(est2), prints_text("\"Results of ACE estimation: [show]\"\nASquared  CSquared  ESquared CaseCount\n0.5       0.2       0.1       4.0)"))
-
-# showMethods(GetEstimate)
-# showMethods(print)
-# showMethods(show)
+# str_c(ace@ASquared)
+# str_c(ace@CSquared)
+# str_c(ace@ESquared)
+# str_c(ace@CaseCount)
