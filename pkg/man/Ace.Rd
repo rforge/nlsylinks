@@ -11,7 +11,7 @@ An ACE model is the foundation of most Behavior Genetic research.  It estimates 
 }
 \usage{
 AceUnivariate(outcomeForSubject1, outcomeForSubject2, relatedness, 
-  method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"))
+  method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), manifestScale="Continuous")
 DeFriesFulkerMethod1(outcomeForSubject1, outcomeForSubject2, relatedness)
 DeFriesFulkerMethod3(outcomeForSubject1, outcomeForSubject2, relatedness)
 }
@@ -21,6 +21,7 @@ DeFriesFulkerMethod3(outcomeForSubject1, outcomeForSubject2, relatedness)
   \item{outcomeForSubject2}{The outcome variable corresponding to the second subject in the pair. }
   \item{relatedness}{The relatedness coefficient for the pair (this is typically abbreviated as \code{R}).}
   \item{method}{The specific estimation technique.}
+  \item{manifestScale}{Currently, only continuous manifest/outcome variables are supported.}
 }
 \details{
 The \code{AceUnivariate} function is a wrapper that calls \code{DeFriesFulkerMethod1} or \code{DeFriesFulkerMethod3}.  Future versions will incorporate methods that use latent variable models.

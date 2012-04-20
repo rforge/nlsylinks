@@ -1,0 +1,65 @@
+\name{CleanSemAceDataset}
+\alias{CleanSemAceDataset}
+\title{
+Produces a cleaned dataset that works well with when using SEM to estimate a univariate ACE model.
+}
+\description{
+This function takes a 'GroupSummary' \code{data.frame} (which is created by the \code{RGroupSummary} function) and returns a \code{data.frame} that is used by the \code{Ace} function.
+}
+\usage{
+CleanSemAceDataset(dsDirty, dsGroupSummary, m1Name, m2Name, rName = "R")
+}
+
+\arguments{
+  \item{dsDirty}{This is the \code{data.frame} to be cleaned.}
+  \item{dsGroupSummary}{The \code{data.frame} containing information about which groups should be included in the analyses.  It should be created by the \code{RGroupSummary} function.}
+  \item{m1Name}{The name of the manifest variable (in \code{dsDirty}) for the first subject in each pair.}
+  \item{m2Name}{The name of the manifest variable (in \code{dsDirty}) for the second subject in each pair.}
+  \item{rName}{The name of the variable (in \code{dsDirty}) indicating the pair's relatedness coefficient.}
+}
+\details{
+  The function takes \code{dsDirty} and produces a new \code{data.frame} with the following features:
+  \enumerate{
+    \item Only three existing columns are retained: \code{M1}, \code{M2}, and \code{R}.  They assigned these names.
+    \item A new column called \code{GroupID} is created to reflect their group membership (which is based on the \code{R} value).  These valuesa re sequential integers, starting at 1.  The group with the weakest \code{R} is 1.  The group with the strongest \code{R} has the largest \code{GroupID} (this is typically the MZ tiwns).
+    \item Any row is excluded if it has a missing data point for \code{M1}, \code{M2}, or \code{R}.
+    \item The \code{data.frame} is sorted by the \code{R} value.  This helps program against the multiple-group SEM API sometimes.
+  }
+}
+\value{
+A \code{data.frame} with one row per subject pair.  The \code{data.frame} contains the following variables (which can NOT be changed by the user):
+\item{ R }{The pair's \code{R} value.}
+\item{ M1 }{The manifest variable for the first subject in each pair.}
+\item{ M2 }{The manifest variable for the second subject in each pair.}
+\item{ GroupID }{ Indicates the pair's group membership.}
+}
+%\references{
+%% ~put references to the literature/web site here ~
+%}
+\author{
+Will Beasley
+}
+%\note{
+%%  ~~further notes~~
+%}
+
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+%\seealso{
+%% ~~objects to See Also as \code{\link{help}}, ~~~
+%}
+\examples{
+dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+m1Name <- "MathStandardized_1" #Stands for Manifest1
+m2Name <- "MathStandardized_2" #Stands for Manifest2
+dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+
+dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, m1Name, m2Name, rName="R" )
+summary(dsClean)
+
+dsClean$AbsDifference <- abs(dsClean$M1 - dsClean$M2)
+plot(jitter(dsClean$R), dsClean$AbsDifference, col="gray70")
+}
+% Add one or more standard keywords, see file 'KEYWORDS' in the
+% R documentation directory.
+\keyword{ ACE }

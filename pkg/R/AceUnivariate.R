@@ -1,5 +1,5 @@
 AceUnivariate <-
-function( outcomeForSubject1, outcomeForSubject2, relatedness, method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3") ) {
+function( outcomeForSubject1, outcomeForSubject2, relatedness, method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), manifestScale="Continuous" ) {
   #print( length(method) )
   if( length(method) != 1 )
     stop(paste("The method argument must contain exactly one element when calling the AceUnivariate function.  It contained ", length(method), " elements.", sep=""))
