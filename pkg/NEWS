@@ -1,9 +1,9 @@
 ﻿
-(Upcoming) Version 0.25 (2012-04-17)
+Version 0.26 (2012-04-20)
 ------------------------------------------------------------------------------
 
 New Features:
-* 'lavaan' package uses a multigroup method for the AceUnivariate function.
+* The new function 'AceLavaanGroup' uses the 'lavaan' package to estimate a multigroup SEM ACE model.
 
 Version 0.24 (2012-04-16)
 ------------------------------------------------------------------------------

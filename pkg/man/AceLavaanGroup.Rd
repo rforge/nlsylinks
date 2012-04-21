@@ -58,20 +58,20 @@ ace
 #Should produce:
 # [1] "Results of ACE estimation: [show]"
 #     ASquared     CSquared     ESquared    CaseCount 
-#    0.6701032    0.1167060    0.2131907 8292.0000000
+#    0.6701032    0.1167060    0.2131907 8292.0000000 
 
-library(lavaan) #Load the lavaan package to access lavaan-specific functions
+library(lavaan) #Load the package to access functions of the lavaan class.
 GetDetails(ace)
 
 #Exmaine fit stats like Chi-Squared, RMSEA, CFI, etc.
-fitMeasures(GetDetails(ace)$lavaan)
+fitMeasures(GetDetails(ace)) #The function 'fitMeasures' is defined in the lavaan package.
 
 #Examine low-level details like each group's individual parameter estimates and standard errors.
-summary(GetDetails(ace)$lavaan)
+summary(GetDetails(ace))
 
 #Extract low-level details. This may be useful when programming simulations.
-inspect(GetDetails(ace)$lavaan, what="converged")
-inspect(GetDetails(ace)$lavaan, what="coef")
+inspect(GetDetails(ace), what="converged") #The lavaan package defines 'inspect'.
+inspect(GetDetails(ace), what="coef")
 }
 \keyword{ ACE }
 

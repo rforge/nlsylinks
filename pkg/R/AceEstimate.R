@@ -70,7 +70,7 @@ methods::setGeneric("GetDetails", function( object ) { standardGeneric("GetDetai
 methods::setMethod(f="GetDetails", "AceEstimate", 
   definition=function( object ) {
     #print(str(object))
-    return( slot(object, "Details") )
+    return( slot(object, "Details")[[1]] )
   }
 )
 

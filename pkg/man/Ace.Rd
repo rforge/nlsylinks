@@ -56,11 +56,14 @@ estimatedAdultWeight <- DeFriesFulkerMethod3(
   outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, 
   outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, 
   relatedness=dsDF$R)  
-# The HSquared and CSquared values should be 0.633936 and 0.006209162.
+estimatedAdultWeight #ASquared and CSquared should be 0.634 and 0.006.
 
 estimatedMath <- DeFriesFulkerMethod3(
   outcomeForSubject1=dsDF$MathStandardized_1, 
   outcomeForSubject2=dsDF$MathStandardized_2, 
-  relatedness=dsDF$R)  
-# The HSquared and CSquared values should be 0.8595078 and 0.03879863.
+  relatedness=dsDF$R) 
+estimatedMath #ASquared and CSquared should be 0.860 and 0.039.
+
+class(GetDetails(estimatedMath))
+summary(GetDetails(estimatedMath))
 }
