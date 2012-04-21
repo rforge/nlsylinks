@@ -1,18 +1,18 @@
-require(stringr)
+#require(stringr)
 
 ###########
 context("Lavaan")
 ###########
 test_that("AceLavaanGroup -MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "MathStandardized_1" #Stands for Manifest1
-  m2Name <- "MathStandardized_2" #Stands for Manifest2
+  mName_1 <- "MathStandardized_1" #Stands for Manifest1
+  mName_2 <- "MathStandardized_2" #Stands for Manifest2
   
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
-  rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, m1Name=m1Name, m2Name=m2Name)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
+#   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, mName_1=mName_1, mName_2=mName_2)
   
-  ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
+  ace <- AceLavaanGroup(dsClean)
   
   expectedASquared <- 0.670103215171409
   expectedCSquared  <- 0.11670604326754
@@ -30,14 +30,14 @@ test_that("AceLavaanGroup -MathStandardized", {
 
 test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "WeightStandardizedForAge19To25_1"
-  m2Name <- "WeightStandardizedForAge19To25_2"
+  mName_1 <- "WeightStandardizedForAge19To25_1"
+  mName_2 <- "WeightStandardizedForAge19To25_2"
   
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
-  rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, m1Name=m1Name, m2Name=m2Name)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
+#   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, mName_1=mName_1, mName_2=mName_2)
   
-  ace <- AceLavaanGroup(dsClean, rLevels, m1Name, m2Name)
+  ace <- AceLavaanGroup(dsClean)
   
   expectedASquared <- 0.687801119966999
   expectedCSquared  <- 7.10884537223939e-15

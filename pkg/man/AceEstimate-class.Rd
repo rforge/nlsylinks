@@ -13,7 +13,9 @@
 A class containing information about a single univariate ACE model.
 }
 \section{Objects from the Class}{
-Objects can be created by calls of the form \code{new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details, ...)}.
+Objects can be created by calls of the form:
+
+\code{new("AceEstimate", aSquared, cSquared, eSquared, caseCount, unity, withinBounds, details, ...)}
 
 }
 \section{Slots}{

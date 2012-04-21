@@ -10,13 +10,13 @@ Before and after running ACE Models, it is important to examine the characterist
 If a group's covariance matrix is not Positive Definite (or it's misbehaving in some other way), it's typically recommended to exclude that group from the SEM. 
 }
 \usage{
-RGroupSummary(ds, m1Name, m2Name, rName)
+RGroupSummary(ds, mName_1, mName_2, rName)
 }
 
 \arguments{
   \item{ds}{The \code{data.frame} containing the following variables:}
-  \item{m1Name}{The name of the manifest variable corresponding to the first subject in the pair.}
-  \item{m2Name}{The name of the manifest variable corresponding to the first subject in the pair.}
+  \item{mName_1}{The name of the manifest variable corresponding to the first subject in the pair.}
+  \item{mName_2}{The name of the manifest variable corresponding to the first subject in the pair.}
   \item{rName}{The name of the variable specifying the pair's \code{Relatedness} coefficient.}
 }
 \details{
@@ -37,7 +37,7 @@ A \code{data.frame} with one row per group.  The \code{data.frame} contains the 
 \item{ PosDefinite }{ Indicates if the group's covariance matrix is positive definite.}
 }
 \references{
-Please see ZZZ (2002) for more information about SEM with multiple groups.
+Please see ZZZ (200?) for more information about SEM with multiple groups.
 }
 \author{
 Will Beasley and David Bard
@@ -54,9 +54,9 @@ Will Beasley and David Bard
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 ds <- Links79PairExpanded  #Load the dataset from the NlsyLinks package.
-m1Name <- "MathStandardized_1" #Stands for Manifest1
-m2Name <- "MathStandardized_2" #Stands for Manifest2
-dsGroupSummary <- RGroupSummary(ds, m1Name, m2Name)
+mName_1 <- "MathStandardized_1" #Stands for Manifest1
+mName_2 <- "MathStandardized_2" #Stands for Manifest2
+dsGroupSummary <- RGroupSummary(ds, mName_1, mName_2)
 dsGroupSummary
 
 #Should return: 
@@ -70,7 +70,7 @@ dsGroupSummary
 
 #To get summary stats for the whole sample, create one large inclusive group.
 ds$Dummy <- 1
-(dsSampleSummary <- RGroupSummary(ds, m1Name, m2Name, rName="Dummy"))
+(dsSampleSummary <- RGroupSummary(ds, mName_1, mName_2, rName="Dummy"))
 
 #Should return:
 # Dummy Included PairCount M1Variance M2Variance M1M2Covariance Correlation Determinant PosDefinite

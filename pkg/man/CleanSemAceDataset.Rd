@@ -7,14 +7,14 @@ Produces a cleaned dataset that works well with when using SEM to estimate a uni
 This function takes a 'GroupSummary' \code{data.frame} (which is created by the \code{RGroupSummary} function) and returns a \code{data.frame} that is used by the \code{Ace} function.
 }
 \usage{
-CleanSemAceDataset(dsDirty, dsGroupSummary, m1Name, m2Name, rName = "R")
+CleanSemAceDataset(dsDirty, dsGroupSummary, mName_1, mName_2, rName = "R")
 }
 
 \arguments{
   \item{dsDirty}{This is the \code{data.frame} to be cleaned.}
   \item{dsGroupSummary}{The \code{data.frame} containing information about which groups should be included in the analyses.  It should be created by the \code{RGroupSummary} function.}
-  \item{m1Name}{The name of the manifest variable (in \code{dsDirty}) for the first subject in each pair.}
-  \item{m2Name}{The name of the manifest variable (in \code{dsDirty}) for the second subject in each pair.}
+  \item{mName_1}{The name of the manifest variable (in \code{dsDirty}) for the first subject in each pair.}
+  \item{mName_2}{The name of the manifest variable (in \code{dsDirty}) for the second subject in each pair.}
   \item{rName}{The name of the variable (in \code{dsDirty}) indicating the pair's relatedness coefficient.}
 }
 \details{
@@ -50,11 +50,11 @@ Will Beasley
 %}
 \examples{
 dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-m1Name <- "MathStandardized_1" #Stands for Manifest1
-m2Name <- "MathStandardized_2" #Stands for Manifest2
-dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+mName_1 <- "MathStandardized_1" #Stands for Manifest1
+mName_2 <- "MathStandardized_2" #Stands for Manifest2
+dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
 
-dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, m1Name, m2Name, rName="R" )
+dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, mName_1, mName_2, rName="R" )
 summary(dsClean)
 
 dsClean$AbsDifference <- abs(dsClean$M1 - dsClean$M2)

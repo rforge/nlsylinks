@@ -4,11 +4,11 @@ context("Clean Ace Sem Dataset")
 ###########
 test_that("CleanSemAceDataset MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "MathStandardized_1" #Stands for Manifest1
-  m2Name <- "MathStandardized_2" #Stands for Manifest2
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  mName_1 <- "MathStandardized_1" #Stands for Manifest1
+  mName_2 <- "MathStandardized_2" #Stands for Manifest2
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
   
-  dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, m1Name, m2Name, rName="R" )
+  dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, mName_1, mName_2, rName="R" )
   
   expectedRowCount <- 8292
   expectedColumnNames <- c('R', 'M1', 'M2', 'GroupID')
@@ -28,11 +28,11 @@ test_that("CleanSemAceDataset MathStandardized", {
 })
 test_that("CleanSemAceDataset WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
-  m2Name <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  mName_1 <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
+  mName_2 <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
   
-  dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, m1Name, m2Name, rName="R" )
+  dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, mName_1, mName_2, rName="R" )
   
   expectedRowCount <- 3478
   expectedColumnNames <- c('R', 'M1', 'M2', 'GroupID')
@@ -63,10 +63,10 @@ context("R Group Summary")
 ###########
 test_that("Group Summary MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "MathStandardized_1" #Stands for Manifest1
-  m2Name <- "MathStandardized_2" #Stands for Manifest2
+  mName_1 <- "MathStandardized_1" #Stands for Manifest1
+  mName_2 <- "MathStandardized_2" #Stands for Manifest2
    
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
   
   expectedRowCount <- 5
   expectedColumnNames <- c('R', 'Included', 'PairCount', 'M1Variance', 'M2Variance', 'M1M2Covariance', 'Correlation', 'Determinant', 'PosDefinite')
@@ -95,10 +95,10 @@ test_that("Group Summary MathStandardized", {
 
 test_that("Group Summary WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
-  m2Name <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
+  mName_1 <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
+  mName_2 <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
   
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
   
   expectedRowCount <- 5
   expectedColumnNames <- c('R', 'Included', 'PairCount', 'M1Variance', 'M2Variance', 'M1M2Covariance', 'Correlation', 'Determinant', 'PosDefinite')
@@ -127,12 +127,12 @@ test_that("Group Summary WeightStandardizedForAge19To25", {
 
 test_that("Group Summary Changed Variable Name for 'R'", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
-  m2Name <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
+  mName_1 <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
+  mName_2 <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
   rName <- "RRR"
   dsFull <- RenameNlsyColumn(dsFull, "R", rName)
                          
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name, rName)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2, rName)
   
   expectedRowCount <- 5
   expectedColumnNames <- c('RRR', 'Included', 'PairCount', 'M1Variance', 'M2Variance', 'M1M2Covariance', 'Correlation', 'Determinant', 'PosDefinite')
@@ -161,12 +161,12 @@ test_that("Group Summary Changed Variable Name for 'R'", {
 
 test_that("Single Group Summary MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  m1Name <- "MathStandardized_1" #Stands for Manifest1
-  m2Name <- "MathStandardized_2" #Stands for Manifest2
+  mName_1 <- "MathStandardized_1" #Stands for Manifest1
+  mName_2 <- "MathStandardized_2" #Stands for Manifest2
   dsFull$DummyGroup <- 1
   rName <- "DummyGroup"
   
-  dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name, rName)
+  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2, rName)
   
   expectedRowCount <- 1
   expectedColumnNames <- c(rName, 'Included', 'PairCount', 'M1Variance', 'M2Variance', 'M1M2Covariance', 'Correlation', 'Determinant', 'PosDefinite')
@@ -195,7 +195,7 @@ test_that("Single Group Summary MathStandardized", {
 })
 
 # require(stringr)
-# dsGroupSummary <- RGroupSummary(dsFull, m1Name, m2Name)
+# dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
 # str_c(colnames(dsGroupSummary), collapse="', '")
 # str_c(dsGroupSummary[, rName], collapse=", ")
 # str_c(dsGroupSummary$Included, collapse=", ")

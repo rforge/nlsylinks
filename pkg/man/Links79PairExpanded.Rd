@@ -72,6 +72,7 @@ plot(jitter(olderR), jitter(youngerR))  #Scatterplot the siblings' responses.
 table(youngerR, olderR)  #Table of the relationship between the siblings' responses.
 ftable(youngerR, olderR, dnn=c("Younger's Version", "Older's Version")) #A formatted table.
 
-#write.csv(Links79PairExpanded, file='F:/Projects/RDev/NlsyLinksStaging/Links79PairExpanded.csv', row.names=FALSE)
+#write.csv(Links79PairExpanded, file='F:/Projects/RDev/NlsyLinksStaging/Links79PairExpanded.csv', 
+#  row.names=FALSE)
 }
 \keyword{datasets}

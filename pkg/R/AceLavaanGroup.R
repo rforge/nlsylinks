@@ -1,8 +1,9 @@
 AceLavaanGroup <-
-function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
+function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
 #   require(lavaan)
 #   require(stringr)
  
+  rLevels <- sort(unique(dsClean$R))
   #These five lines enumerate the path coefficient labels to be inserted into the model statement.
   rString <- stringr::str_c(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
   # aString <- str_c(rep("a", length(rLevels)), collapse=",") #The output is typically "a,a,a,a"
@@ -69,9 +70,10 @@ function( dsClean, rLevels, m1Name, m2Name, rName="R", estimateA=TRUE, estimateC
   if( printOutput ) print(paste("Chi Square: ", lavaan::fitMeasures(fit)[["chisq"]])) #Print the Chi Square value
   
   #Extract the UNSCALED ACE components.
-  a2 <- subset(lavaan::parameterEstimates(fit), label=="a2", select="est")[1, 1]
-  c2 <- subset(lavaan::parameterEstimates(fit), label=="c2", select="est")[1, 1]
-  e2 <- subset(lavaan::parameterEstimates(fit), label=="e2", select="est")[1, 1]
+  est <- parameterEstimates(fit)
+  a2 <- est[est$label=="a2", "est"]
+  c2 <- est[est$label=="c2", "est"]
+  e2 <- est[est$label=="e2", "est"]
   
   #variogram-like diagnostics
   # plot(dsGroupSummary$R, dsGroupSummary$Covariance, pch=(4-3*dsGroupSummary$Included))

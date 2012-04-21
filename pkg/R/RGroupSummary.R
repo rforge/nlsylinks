@@ -1,8 +1,8 @@
 RGroupSummary <-
-function( ds, m1Name, m2Name, rName="R") {
+function( ds, mName_1, mName_2, rName="R") {
   #   ds <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  #   m1Name <- "MathStandardized_1" #Stands for Manifest1
-  #   m2Name <- "MathStandardized_2" #Stands for Manifest2
+  #   mName_1 <- "MathStandardized_1" #Stands for Manifest1
+  #   mName_2 <- "MathStandardized_2" #Stands for Manifest2
   
   #   ds <-dsFull
   #   rName <- "RRR"
@@ -18,13 +18,13 @@ function( ds, m1Name, m2Name, rName="R") {
   #The primary goal of this loop is to identify the R groups whose covariance matrix isn't positive definite.
   for( rLevel in rLevelsFirstPass ) {
     #print(rLevel)
-    dsGroupSlice <- ds[!is.na(ds[,rName]) & ds[,rName]==rLevel & !is.na(ds[, m1Name]) & !is.na(ds[, m2Name]), c(m1Name, m2Name)]
+    dsGroupSlice <- ds[!is.na(ds[,rName]) & ds[,rName]==rLevel & !is.na(ds[, mName_1]) & !is.na(ds[, mName_2]), c(mName_1, mName_2)]
     
     if( nrow(dsGroupSlice) > 0 ) {
       groupCovarianceMatrix <- cov(dsGroupSlice)#, use="complete.obs") 
       determinant <- det(groupCovarianceMatrix)
       isPositiveDefinite <- (determinant > determinantThreshold)
-      correlation <- cor(dsGroupSlice[, m1Name], dsGroupSlice[, m2Name])
+      correlation <- cor(dsGroupSlice[, mName_1], dsGroupSlice[, mName_2])
     }
     else {
       groupCovarianceMatrix <- matrix(NA, ncol=2, nrow=2)

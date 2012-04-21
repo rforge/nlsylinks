@@ -12,7 +12,9 @@ An ACE model is the foundation of most Behavior Genetic research.  It estimates 
 \usage{
 AceUnivariate(outcomeForSubject1, outcomeForSubject2, relatedness, 
   method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), manifestScale="Continuous")
+  
 DeFriesFulkerMethod1(outcomeForSubject1, outcomeForSubject2, relatedness)
+
 DeFriesFulkerMethod3(outcomeForSubject1, outcomeForSubject2, relatedness)
 }
 %- maybe also 'usage' for other objects documented here.

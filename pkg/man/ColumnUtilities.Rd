@@ -11,7 +11,9 @@ A collection of functions that helps data management \code{data.frame}s, particu
 }
 \usage{
 VerifyColumnExists( dataFrame, columnName )
+
 RenameColumn( dataFrame, oldColumnName, newColumnName )
+
 RenameNlsyColumn( dataFrame, nlsyRNumber, newColumnName )
 }
 
@@ -48,14 +50,19 @@ The \code{VerifyColumnExists} function check that exactly one column exists with
 %\code{\link{Links79Pair}}
 %}
 \examples{
-library(NlsyLinks) #Load the package into the current R session.
 filePathGen2 <- file.path(path.package("NlsyLinks"), "extdata", "Gen2Birth.csv") #"F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"
 ds <- read.csv(filePathGen2)
-originalColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", "C0005700", "C0328000", "C0328600", "C0328800")
-newColumnNames <- c("SubjectID", "MotherID", "Race", "Gender", "Yob", "GestationWeeks", "BirthWeightInOunces", "BirthLengthInInches")
+
+originalColumNames <- c("C0000100", "C0000200", "C0005300", "C0005400", 
+  "C0005700", "C0328000", "C0328600", "C0328800")
+
+newColumnNames <- c("SubjectID", "MotherID", "Race", "Gender", "Yob", 
+  "GestationWeeks", "BirthWeightInOunces", "BirthLengthInInches")
+
 for( columnIndex in seq_along(originalColumNames) ) {
-  ds <- RenameNlsyColumn(dataFrame=ds, nlsyRNumber=originalColumNames[columnIndex], newColumnName=newColumnNames[columnIndex])
+  ds <- RenameNlsyColumn(ds, originalColumNames[columnIndex], newColumnNames[columnIndex])
 }
+
 
 }
 
