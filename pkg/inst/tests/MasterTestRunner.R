@@ -14,7 +14,7 @@ ClearMostVariables <- function( ) {
 
 try(detach("package:NlsyLinks"), silent=TRUE)
 require(NlsyLinks)
-?NlsyLinks
+#?NlsyLinks
 
 source(pathToBeIncorporated)
 

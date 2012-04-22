@@ -9,7 +9,7 @@ test_that("AceUnivariate -NULL method", {
   dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   
   expect_error(
-    AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method=NULL),
+    AceUnivariate(method=NULL, dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
     "The method argument must contain exactly one element when calling the AceUnivariate function.  It contained 0 elements."
   )
 })
@@ -19,7 +19,7 @@ test_that("AceUnivariate -blank method", {
   dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   
   expect_error(
-    AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method=""),
+    AceUnivariate(method="", dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
     "The method argument must contain exactly one element when calling the AceUnivariate function.  It was blank."
   )
 })
@@ -29,7 +29,7 @@ test_that("AceUnivariate -unrecognized name method", {
   dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   
   expect_error(
-    AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method="ddddd"),
+    AceUnivariate(method="ddddd", dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
     "The method argument, 'ddddd' was not recognized as a valid option to the AceUnivariate function."
   )
 })
@@ -39,7 +39,7 @@ test_that("AceUnivariate -multiple methods passed", {
   dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   
   expect_error(
-    AceUnivariate(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R, method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3")),
+    AceUnivariate(method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
     "The method argument must contain exactly one element when calling the AceUnivariate function.  It contained 2 elements."
   )
 })

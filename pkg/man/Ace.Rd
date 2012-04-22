@@ -10,19 +10,20 @@ Estimates the heritability of additive traits using a single variable.
 An ACE model is the foundation of most Behavior Genetic research.  It estimates the additive heritability (with \emph{a}), common environment (with \emph{c}) and unshared heritability/environment (with \emph{e}).
 }
 \usage{
-AceUnivariate(outcomeForSubject1, outcomeForSubject2, relatedness, 
-  method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), manifestScale="Continuous")
+AceUnivariate(method=c("DeFriesFulkerMethod1","DeFriesFulkerMethod3"), dataSet, oName_1, oName_2, 
+  rName="R", manifestScale="Continuous")
   
-DeFriesFulkerMethod1(outcomeForSubject1, outcomeForSubject2, relatedness)
+DeFriesFulkerMethod1(dataSet, oName_1, oName_2, rName="R")
 
-DeFriesFulkerMethod3(outcomeForSubject1, outcomeForSubject2, relatedness)
+DeFriesFulkerMethod3(dataSet, oName_1, oName_2, rName="R")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{outcomeForSubject1}{The outcome variable corresponding to the first subject in the pair. }
-  \item{outcomeForSubject2}{The outcome variable corresponding to the second subject in the pair. }
-  \item{relatedness}{The relatedness coefficient for the pair (this is typically abbreviated as \code{R}).}
   \item{method}{The specific estimation technique.}
+  \item{dataSet}{The \code{data.frame} that contains the two outcome variables and the relatedness coefficient (corresponding to \code{oName_1}, \code{oName_2}, and \code{rName})}.
+  \item{oName_1}{The name of the outcome variable corresponding to the first subject in the pair. This should be a \code{character} value.}
+  \item{oName_2}{The name of theoutcome variable corresponding to the second subject in the pair. This should be a \code{character} value. }
+  \item{rName}{The name of the relatedness coefficient for the pair (this is typically abbreviated as \code{R}). This should be a \code{character} value.}
   \item{manifestScale}{Currently, only continuous manifest/outcome variables are supported.}
 }
 \details{
@@ -55,15 +56,15 @@ dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset
   outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
 
 estimatedAdultWeight <- DeFriesFulkerMethod3(
-  outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, 
-  outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, 
-  relatedness=dsDF$R)  
+  dataSet=dsDF,    
+  oName_1="WeightStandardizedForAge19To25_1", 
+  oName_2="WeightStandardizedForAge19To25_2")  
 estimatedAdultWeight #ASquared and CSquared should be 0.634 and 0.006.
 
 estimatedMath <- DeFriesFulkerMethod3(
-  outcomeForSubject1=dsDF$MathStandardized_1, 
-  outcomeForSubject2=dsDF$MathStandardized_2, 
-  relatedness=dsDF$R) 
+  dataSet=dsDF,    
+  oName_1="MathStandardized_1", 
+  oName_2="MathStandardized_2")
 estimatedMath #ASquared and CSquared should be 0.860 and 0.039.
 
 class(GetDetails(estimatedMath))

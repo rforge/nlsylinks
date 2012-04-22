@@ -1,8 +1,8 @@
 Package: NlsyLinks
 Type: Package
 Title: Utilities and kinship information for Behavior Genetics and Developmental research using the NLSY.
-Version: 0.28
-Date: 2012-04-21
+Version: 0.29
+Date: 2012-04-22
 Author: Will Beasley, Joe Rodgers, David Bard, and Kelly Meredith
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 Imports: methods, lavaan, stringr 
