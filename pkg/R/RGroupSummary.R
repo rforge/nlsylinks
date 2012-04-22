@@ -1,8 +1,8 @@
 RGroupSummary <-
-function( ds, mName_1, mName_2, rName="R", determinantThreshold=1e-5) {
+function( ds, oName_1, oName_2, rName="R", determinantThreshold=1e-5) {
 #     ds <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-#     mName_1 <- "MathStandardized_1" #Stands for Manifest1
-#     mName_2 <- "MathStandardized_2" #Stands for Manifest2
+#     oName_1 <- "MathStandardized_1" #Stands for Manifest1
+#     oName_2 <- "MathStandardized_2" #Stands for Manifest2
 #   
   #   ds <-dsFull
   #   rName <- "RRR"
@@ -11,9 +11,8 @@ function( ds, mName_1, mName_2, rName="R", determinantThreshold=1e-5) {
   rLevelsFirstPass <- sort(unique(ds[,rName])) #Enumerate the values of R existing in the current data.frame.
   #determinantThreshold <- 0 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
 #   determinantThreshold <- 1e-5 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
-  dsGroupSummary <- data.frame(R=rLevelsFirstPass, Included=F, PairCount=NA, M1Variance=NA, M2Variance=NA, M1M2Covariance=NA, Correlation=NA, Determinant=NA, PosDefinite=FALSE)
+  dsGroupSummary <- data.frame(R=rLevelsFirstPass, Included=F, PairCount=NA, O1Variance=NA, O2Variance=NA, O1O2Covariance=NA, Correlation=NA, Determinant=NA, PosDefinite=FALSE)
   
-  #RenameColumn (dsGroupSummary)[1] <- rName
   
   index <- VerifyColumnExists(dataFrame=dsGroupSummary, columnName="R")
   colnames(dsGroupSummary)[index] <- rName
@@ -21,13 +20,13 @@ function( ds, mName_1, mName_2, rName="R", determinantThreshold=1e-5) {
   #The primary goal of this loop is to identify the R groups whose covariance matrix isn't positive definite.
   for( rLevel in rLevelsFirstPass ) {
     #print(rLevel)
-    dsGroupSlice <- ds[!is.na(ds[,rName]) & ds[,rName]==rLevel & !is.na(ds[, mName_1]) & !is.na(ds[, mName_2]), c(mName_1, mName_2)]
+    dsGroupSlice <- ds[!is.na(ds[,rName]) & ds[,rName]==rLevel & !is.na(ds[, oName_1]) & !is.na(ds[, oName_2]), c(oName_1, oName_2)]
     
     if( nrow(dsGroupSlice) > 0 ) {
       groupCovarianceMatrix <- cov(dsGroupSlice)#, use="complete.obs") 
       determinant <- det(groupCovarianceMatrix)
       isPositiveDefinite <- (determinant > determinantThreshold)
-      correlation <- cor(dsGroupSlice[, mName_1], dsGroupSlice[, mName_2])
+      correlation <- cor(dsGroupSlice[, oName_1], dsGroupSlice[, oName_2])
     }
     else {
       groupCovarianceMatrix <- matrix(NA, ncol=2, nrow=2)
@@ -36,7 +35,7 @@ function( ds, mName_1, mName_2, rName="R", determinantThreshold=1e-5) {
       correlation <- NA
     }
     
-    dsGroupSummary[dsGroupSummary[,rName]==rLevel, c("PairCount", "M1Variance", "M2Variance", "M1M2Covariance", "Correlation", "Determinant", "PosDefinite")] <- c(
+    dsGroupSummary[dsGroupSummary[,rName]==rLevel, c("PairCount", "O1Variance", "O2Variance", "O1O2Covariance", "Correlation", "Determinant", "PosDefinite")] <- c(
       nrow(dsGroupSlice),
       groupCovarianceMatrix[1, 1],
       groupCovarianceMatrix[2, 2],

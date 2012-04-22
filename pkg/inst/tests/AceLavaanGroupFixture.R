@@ -5,12 +5,12 @@ context("Lavaan")
 ###########
 test_that("AceLavaanGroup -MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  mName_1 <- "MathStandardized_1" #Stands for Manifest1
-  mName_2 <- "MathStandardized_2" #Stands for Manifest2
+  oName_1 <- "MathStandardized_1" #Stands for Manifest1
+  oName_2 <- "MathStandardized_2" #Stands for Manifest2
   
-  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
+  dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
 #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, mName_1=mName_1, mName_2=mName_2)
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
   
   ace <- AceLavaanGroup(dsClean)
   
@@ -30,12 +30,12 @@ test_that("AceLavaanGroup -MathStandardized", {
 
 test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  mName_1 <- "WeightStandardizedForAge19To25_1"
-  mName_2 <- "WeightStandardizedForAge19To25_2"
+  oName_1 <- "WeightStandardizedForAge19To25_1"
+  oName_2 <- "WeightStandardizedForAge19To25_2"
   
-  dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
+  dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
 #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
-  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, mName_1=mName_1, mName_2=mName_2)
+  dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
   
   ace <- AceLavaanGroup(dsClean)
   

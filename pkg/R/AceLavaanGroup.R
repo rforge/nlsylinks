@@ -14,11 +14,11 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
   
   #Generate the model statements that will exist in all models (ie, ACE, AE, AC, & E)
   modelBase <- paste("
-    M1 ~~ 0 * M2                          #The manifest variables are uncorrelated.
-    M1 + M2 ~ rep('int',", groupCount, ") * 1           #The manifest variables are fed the same intercept (for all groups).
+    O1 ~~ 0 * O2                          #The manifest variables are uncorrelated.
+    O1 + O2 ~ rep('int',", groupCount, ") * 1           #The manifest variables are fed the same intercept (for all groups).
     
-    E1 =~ rep('e',", groupCount, ") * M1  #Declare the contributions of E to Subject1 (for all groups).
-    E2 =~ rep('e',", groupCount, ") * M2  #Declare the contributions of E to Subject2 (for all groups).
+    E1 =~ rep('e',", groupCount, ") * O1  #Declare the contributions of E to Subject1 (for all groups).
+    E2 =~ rep('e',", groupCount, ") * O2  #Declare the contributions of E to Subject2 (for all groups).
     
     E1 ~~ 0 * E2                          #The Es are uncorrelated
     E1 ~~ 1 * E1                          #The Es have a variance of 1
@@ -29,8 +29,8 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
 
   #Generate the model statements that will exist in all models estimating the A component.
   modelA <- paste("
-    A1 =~ rep('a',", groupCount,") * M1   #Declare the contributions of A to Subject1 (for all groups).
-    A2 =~ rep('a',", groupCount,") * M2   #Declare the contributions of A to Subject2 (for all groups).
+    A1 =~ rep('a',", groupCount,") * O1   #Declare the contributions of A to Subject1 (for all groups).
+    A2 =~ rep('a',", groupCount,") * O2   #Declare the contributions of A to Subject2 (for all groups).
     A1 ~~ c(", rString, ") * A2           #Declare the genetic relatedness between Subject1 and Subject2. This coefficient differs for all groups.
     
     A1 ~~ 1 * A1                          #The As have a variance of 1
@@ -42,8 +42,8 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
   
   #Generate the model statements that will exist in all models estimating the C component.
   modelC <- paste("
-    C1 =~ rep('c',", groupCount,") * M1   #Declare the contributions of C to Subject1 (for all groups).
-    C2 =~ rep('c',", groupCount,") * M2   #Declare the contributions of C to Subject2 (for all groups).
+    C1 =~ rep('c',", groupCount,") * O1   #Declare the contributions of C to Subject1 (for all groups).
+    C2 =~ rep('c',", groupCount,") * O2   #Declare the contributions of C to Subject2 (for all groups).
     
     C1 ~~ 1 * C2                          #The Cs are perfectly correlated. !!Note this restricts the sample to immediate families!!
     C1 ~~ 1 * C1                          #The Cs have a variance of 1

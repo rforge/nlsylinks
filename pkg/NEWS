@@ -1,4 +1,11 @@
 ﻿
+Version 0.27 (2012-04-21)
+------------------------------------------------------------------------------
+
+Updates:
+* Modified function signature to be make package more consistent
+* Additional lavaan example in ACE vignette.
+
 Version 0.26 (2012-04-20)
 ------------------------------------------------------------------------------
 

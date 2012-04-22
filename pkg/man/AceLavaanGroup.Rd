@@ -9,15 +9,15 @@ This function uses the \pkg{lavaan} package to estimate a univariate ACE model, 
 }
 \usage{
 AceLavaanGroup(dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE)
-%AceLavaanGroup(dsClean, rLevels, mName_1, mName_2, rName="R", 
+%AceLavaanGroup(dsClean, rLevels, oName_1, oName_2, rName="R", 
 %  estimateA=TRUE, estimateC=TRUE, printOutput=FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dsClean}{The \code{data.frame} containing complete cases for the \code{R} groups to be included in the estimation.}
 %  \item{rLevels}{The values of \code{R} forming each group.}
-%  \item{mName_1}{The name of the manifest variable for the \emph{first} subject in each pair.}
-%  \item{mName_2}{The name of the manifest variable for the \emph{second} subject in each pair.}
+%  \item{oName_1}{The name of the manifest variable for the \emph{first} subject in each pair.}
+%  \item{oName_2}{The name of the manifest variable for the \emph{second} subject in each pair.}
 %  \item{rName}{The name of the variable containing the \code{R} value.}
   \item{estimateA}{Should the \emph{A} variance component be estimated?  A^2 represents the proportion of variability due to a shared genetic influence.}
   \item{estimateC}{Should the \emph{C} variance component be estimated?  C^2 represents the proportion of variability due to a shared environmental influence.}
@@ -46,11 +46,11 @@ Further ACE model details are discussed in our package's vignette (in the consol
 }
 \examples{
 dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-mName_1 <- "MathStandardized_1" #Stands for Manifest1
-mName_2 <- "MathStandardized_2" #Stands for Manifest2
+oName_1 <- "MathStandardized_1" #Stands for Manifest1
+oName_2 <- "MathStandardized_2" #Stands for Manifest2
 
-dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
-dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary, mName_1, mName_2)
+dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
+dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary, oName_1, oName_2)
 
 ace <- AceLavaanGroup(dsClean)
 ace

@@ -10,13 +10,13 @@ Before and after running ACE Models, it is important to examine the characterist
 If a group's covariance matrix is not Positive Definite (or it's misbehaving in some other way), it's typically recommended to exclude that group from the SEM. 
 }
 \usage{
-RGroupSummary(ds, mName_1, mName_2, rName, determinantThreshold=1e-5)
+RGroupSummary(ds, oName_1, oName_2, rName, determinantThreshold=1e-5)
 }
 
 \arguments{
   \item{ds}{The \code{data.frame} containing the following variables:}
-  \item{mName_1}{The name of the manifest variable corresponding to the first subject in the pair.}
-  \item{mName_2}{The name of the manifest variable corresponding to the first subject in the pair.}
+  \item{oName_1}{The name of the manifest variable corresponding to the first subject in the pair.}
+  \item{oName_2}{The name of the manifest variable corresponding to the first subject in the pair.}
   \item{rName}{The name of the variable specifying the pair's \code{Relatedness} coefficient.}
   \item{determinantThreshold}{The minimum value the covariance matrix's determinant (for the group) should exceed to be considered Positive Definite.}
 }
@@ -58,9 +58,9 @@ Will Beasley and David Bard
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 ds <- Links79PairExpanded  #Load the dataset from the NlsyLinks package.
-mName_1 <- "MathStandardized_1" #Stands for Manifest1
-mName_2 <- "MathStandardized_2" #Stands for Manifest2
-dsGroupSummary <- RGroupSummary(ds, mName_1, mName_2)
+oName_1 <- "MathStandardized_1" #Stands for Manifest1
+oName_2 <- "MathStandardized_2" #Stands for Manifest2
+dsGroupSummary <- RGroupSummary(ds, oName_1, oName_2)
 dsGroupSummary
 
 #Should return: 
@@ -74,7 +74,7 @@ dsGroupSummary
 
 #To get summary stats for the whole sample, create one large inclusive group.
 ds$Dummy <- 1
-(dsSampleSummary <- RGroupSummary(ds, mName_1, mName_2, rName="Dummy"))
+(dsSampleSummary <- RGroupSummary(ds, oName_1, oName_2, rName="Dummy"))
 
 #Should return:
 # Dummy Included PairCount M1Variance M2Variance M1M2Covariance Correlation Determinant PosDefinite

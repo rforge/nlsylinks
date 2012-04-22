@@ -7,14 +7,14 @@ Produces a cleaned dataset that works well with when using SEM to estimate a uni
 This function takes a 'GroupSummary' \code{data.frame} (which is created by the \code{RGroupSummary} function) and returns a \code{data.frame} that is used by the \code{Ace} function.
 }
 \usage{
-CleanSemAceDataset(dsDirty, dsGroupSummary, mName_1, mName_2, rName = "R")
+CleanSemAceDataset(dsDirty, dsGroupSummary, oName_1, oName_2, rName = "R")
 }
 
 \arguments{
   \item{dsDirty}{This is the \code{data.frame} to be cleaned.}
   \item{dsGroupSummary}{The \code{data.frame} containing information about which groups should be included in the analyses.  It should be created by the \code{RGroupSummary} function.}
-  \item{mName_1}{The name of the manifest variable (in \code{dsDirty}) for the first subject in each pair.}
-  \item{mName_2}{The name of the manifest variable (in \code{dsDirty}) for the second subject in each pair.}
+  \item{oName_1}{The name of the manifest variable (in \code{dsDirty}) for the first subject in each pair.}
+  \item{oName_2}{The name of the manifest variable (in \code{dsDirty}) for the second subject in each pair.}
   \item{rName}{The name of the variable (in \code{dsDirty}) indicating the pair's relatedness coefficient.}
 }
 \details{
@@ -50,14 +50,14 @@ Will Beasley
 %}
 \examples{
 dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-mName_1 <- "MathStandardized_1" #Stands for Manifest1
-mName_2 <- "MathStandardized_2" #Stands for Manifest2
-dsGroupSummary <- RGroupSummary(dsFull, mName_1, mName_2)
+oName_1 <- "MathStandardized_1" #Stands for Manifest1
+oName_2 <- "MathStandardized_2" #Stands for Manifest2
+dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
 
-dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, mName_1, mName_2, rName="R" )
+dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, oName_1, oName_2, rName="R" )
 summary(dsClean)
 
-dsClean$AbsDifference <- abs(dsClean$M1 - dsClean$M2)
+dsClean$AbsDifference <- abs(dsClean$O1 - dsClean$O2)
 plot(jitter(dsClean$R), dsClean$AbsDifference, col="gray70")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

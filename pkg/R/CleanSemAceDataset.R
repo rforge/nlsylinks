@@ -1,11 +1,11 @@
 CleanSemAceDataset <-
-function( dsDirty, dsGroupSummary, mName_1, mName_2, rName="R" ) {
+function( dsDirty, dsGroupSummary, oName_1, oName_2, rName="R" ) {
   rLevelsToInclude <- dsGroupSummary[dsGroupSummary$Included, rName]
   
-  #It's necessary to drop the missing Groups & unnecessary columns.  Missing M1s & M2s are dropped for the sake of memory space.
-  oldColumnNames <- c(rName, mName_1, mName_2)
-  newColumnNames <- c("R", "M1", "M2")
-  selectedRows <- (!is.na(dsDirty[, rName])) & (dsDirty[, rName] %in%  rLevelsToInclude) & (!is.na(dsDirty[, mName_1])) & (!is.na(dsDirty[, mName_2]))
+  #It's necessary to drop the missing Groups & unnecessary columns.  Missing O1s & O2s are dropped for the sake of memory space.
+  oldColumnNames <- c(rName, oName_1, oName_2)
+  newColumnNames <- c("R", "O1", "O2")
+  selectedRows <- (!is.na(dsDirty[, rName])) & (dsDirty[, rName] %in%  rLevelsToInclude) & (!is.na(dsDirty[, oName_1])) & (!is.na(dsDirty[, oName_2]))
   dsClean <- dsDirty[selectedRows, oldColumnNames] 
   
   colnames(dsClean) <- newColumnNames
