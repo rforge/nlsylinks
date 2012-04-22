@@ -1,6 +1,6 @@
 DeFriesFulkerMethod1 <-
 function( outcomeForSubject1, outcomeForSubject2, relatedness ) {   
-  lmDetails <- lm(outcomeForSubject1 ~ 1 + outcomeForSubject2 + relatedness + outcomeForSubject2*relatedness)
+  lmDetails <- stats::lm(outcomeForSubject1 ~ 1 + outcomeForSubject2 + relatedness + outcomeForSubject2*relatedness)
   brief <- summary(lmDetails)
   coeficients <- coef(brief)
   nDouble <- length(brief$residuals) 
@@ -11,7 +11,7 @@ function( outcomeForSubject1, outcomeForSubject2, relatedness ) {
   eSquared <- 1 - (b1+b3)
   
   details <- list(lm=lmDetails)
-  aceEstimate <- CreateAceEstimate(aSquared=b3, cSquared=b1, eSquared=eSquared, caseCount=nDouble, details=details)
+  aceEstimate <- NlsyLinks::CreateAceEstimate(aSquared=b3, cSquared=b1, eSquared=eSquared, caseCount=nDouble, details=details)
   return( aceEstimate )
   #return( list(ASquared=b3, CSquared=b1, ESquared=eSquared, RowCount=nDouble) )
 }

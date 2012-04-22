@@ -90,6 +90,6 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
   caseCount <- nrow(dsClean)
   details <- list(lavaan=fit)
   #print(paste("R Levels excluded:",  stringr::str_c(rLevelsToExclude, collapse=", "), "; R Levels retained:", rString)) #Print the dropped & retained groups.
-  ace <- CreateAceEstimate(aSquared=components[1], cSquared=components[2], eSquared=components[3], caseCount=caseCount, details=details)
+  ace <- NlsyLinks::CreateAceEstimate(aSquared=components[1], cSquared=components[2], eSquared=components[3], caseCount=caseCount, details=details)
   return( ace )
 }

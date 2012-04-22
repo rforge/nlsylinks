@@ -4,7 +4,7 @@ function( outcomeForSubject1, outcomeForSubject2, relatedness ) {
   dv_2Centered <- scale(outcomeForSubject2, center=TRUE, scale=FALSE)
   interaction <- dv_2Centered*relatedness    
   
-  lmDetails <- lm(dv_1Centered ~ 0 + dv_2Centered + interaction) #The '0' specifies and intercept-free model.
+  lmDetails <- stats::lm(dv_1Centered ~ 0 + dv_2Centered + interaction) #The '0' specifies and intercept-free model.
   brief <- summary(lmDetails)
   
   coeficients <- coef(brief)
@@ -14,7 +14,7 @@ function( outcomeForSubject1, outcomeForSubject2, relatedness ) {
   eSquared <- 1 - (b1+b2)
   
   details <- list(lm=lmDetails)
-  aceEstimate <- CreateAceEstimate(aSquared=b2, cSquared=b1, eSquared=eSquared, caseCount=nDouble, details=details)
+  aceEstimate <- NlsyLinks::CreateAceEstimate(aSquared=b2, cSquared=b1, eSquared=eSquared, caseCount=nDouble, details=details)
   return( aceEstimate )
 #  return( list(ASquared=b2, CSquared=b1, ESquared=eSquared, RowCount=nDouble) )
 }

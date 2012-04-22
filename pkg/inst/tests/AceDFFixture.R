@@ -11,6 +11,8 @@ test_that("DFMethod1 -MathStandardized", {
   expectedCSquared <- -0.02715555
   expectedESquared <- 0.04918908
   expectedRowCount <- 16588
+  unique(dsDF$R)
+  #dsDF <- dsDF[dsDF$R %in% c(0, .25, .375, .5, 1), ]  
   
   actual <- DeFriesFulkerMethod1(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R)
   expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
@@ -120,6 +122,7 @@ test_that("DFMethod3 -MathStandardized", {
   expectedCSquared <- 0.03879863
   expectedESquared <- 0.1016935
   expectedRowCount <- 16588
+  #dsDF <- dsDF[dsDF$R %in% c(0, .25, .375, .5, 1), ]
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$MathStandardized_1, outcomeForSubject2=dsDF$MathStandardized_2, relatedness=dsDF$R)
   expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
@@ -147,6 +150,7 @@ test_that("DFMethod3 -Weight", {
   expectedCSquared <- -0.08201297
   expectedESquared <- 0.3039238
   expectedRowCount <- 13942
+  #dsDF <- dsDF[dsDF$R %in% c(0, .25, .375, .5, 1), ]
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$Weight_1, outcomeForSubject2=dsDF$Weight_2, relatedness=dsDF$R)
   expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
@@ -173,6 +177,7 @@ test_that("DFMethod3 -WeightStandardized", {
   expectedCSquared <- -0.00987871
   expectedESquared <- 0.3161913
   expectedRowCount <- 13942
+  #dsDF <- dsDF[dsDF$R %in% c(0, .25, .375, .5, 1), ]
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$WeightStandardized_1, outcomeForSubject2=dsDF$WeightStandardized_2, relatedness=dsDF$R)
   expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)
@@ -199,6 +204,7 @@ test_that("DFMethod3 -WeightStandardizedAdult", {
   expectedCSquared <-  0.006209162
   expectedESquared <- 0.3598549
   expectedRowCount <- 6956
+  #dsDF <- dsDF[dsDF$R %in% c(0, .25, .375, .5, 1), ]
   
   actual <- DeFriesFulkerMethod3(outcomeForSubject1=dsDF$WeightStandardizedForAge19To25_1, outcomeForSubject2=dsDF$WeightStandardizedForAge19To25_2, relatedness=dsDF$R)
   expect_equal(object=slot(actual, "ASquared"), expected=expectedASquared, tolerance=1e-6, scale=1)

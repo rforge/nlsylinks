@@ -63,7 +63,8 @@ methods::setMethod(f="print", "AceEstimate", function( x, ... ) {
 methods::setMethod(f="show", "AceEstimate", function( object ) {
   print("Results of ACE estimation: [show]")#\n")
   #print(c(GetEstimate(object), CaseCount=slot(object, "CaseCount")))
-  print(c(ASquared=slot(object, "ASquared"), CSquared=slot(object, "CSquared"), ESquared=slot(object, "ESquared"), CaseCount=slot(object,"CaseCount")))
+  print(c(ASquared=slot(object, "ASquared"), CSquared=slot(object, "CSquared"), ESquared=slot(object, "ESquared"), CaseCount=round(slot(object,"CaseCount"))))
+  #cat(c(ASquared=slot(object, "ASquared"), CSquared=slot(object, "CSquared"), ESquared=slot(object, "ESquared"), CaseCount=round(slot(object,"CaseCount"))))
 })
 
 methods::setGeneric("GetDetails", function( object ) { standardGeneric("GetDetails") })

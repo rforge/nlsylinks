@@ -10,7 +10,7 @@ Before and after running ACE Models, it is important to examine the characterist
 If a group's covariance matrix is not Positive Definite (or it's misbehaving in some other way), it's typically recommended to exclude that group from the SEM. 
 }
 \usage{
-RGroupSummary(ds, mName_1, mName_2, rName)
+RGroupSummary(ds, mName_1, mName_2, rName, determinantThreshold=1e-5)
 }
 
 \arguments{
@@ -18,11 +18,14 @@ RGroupSummary(ds, mName_1, mName_2, rName)
   \item{mName_1}{The name of the manifest variable corresponding to the first subject in the pair.}
   \item{mName_2}{The name of the manifest variable corresponding to the first subject in the pair.}
   \item{rName}{The name of the variable specifying the pair's \code{Relatedness} coefficient.}
+  \item{determinantThreshold}{The minimum value the covariance matrix's determinant (for the group) should exceed to be considered Positive Definite.}
 }
 \details{
 This function doesn't specific to an ACE model and groups defined by \code{R}.  It could be applied to any multiple-group SEM with two manifest variables.  In the future, we may generalize it beyond two manifest variables.
 
 To get summary stats for the entire sample, create a dummy indicator variable that assigns everyone to the same group.  See the second example below.
+
+The default determinantThreshold value is nonzero, in order to forgive slight numerical inaccuracies caused by fixed-precision arithmetic.
 }
 \value{
 A \code{data.frame} with one row per group.  The \code{data.frame} contains the following variables:
@@ -38,6 +41,7 @@ A \code{data.frame} with one row per group.  The \code{data.frame} contains the 
 }
 \references{
 Please see ZZZ (200?) for more information about SEM with multiple groups.
+TODO: refs for determinant & positive definite.
 }
 \author{
 Will Beasley and David Bard

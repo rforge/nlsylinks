@@ -1,15 +1,18 @@
 RGroupSummary <-
-function( ds, mName_1, mName_2, rName="R") {
-  #   ds <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-  #   mName_1 <- "MathStandardized_1" #Stands for Manifest1
-  #   mName_2 <- "MathStandardized_2" #Stands for Manifest2
-  
+function( ds, mName_1, mName_2, rName="R", determinantThreshold=1e-5) {
+#     ds <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
+#     mName_1 <- "MathStandardized_1" #Stands for Manifest1
+#     mName_2 <- "MathStandardized_2" #Stands for Manifest2
+#   
   #   ds <-dsFull
   #   rName <- "RRR"
   
+  #ds <- subset(ds, R==.75)
   rLevelsFirstPass <- sort(unique(ds[,rName])) #Enumerate the values of R existing in the current data.frame.
-  determinantThreshold <- 0 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
+  #determinantThreshold <- 0 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
+#   determinantThreshold <- 1e-5 #The value the determinent should exceed to qualify as positive definite. TODO: Consider allowing the user to increase this value a little above zero, for extra stability.
   dsGroupSummary <- data.frame(R=rLevelsFirstPass, Included=F, PairCount=NA, M1Variance=NA, M2Variance=NA, M1M2Covariance=NA, Correlation=NA, Determinant=NA, PosDefinite=FALSE)
+  
   #RenameColumn (dsGroupSummary)[1] <- rName
   
   index <- VerifyColumnExists(dataFrame=dsGroupSummary, columnName="R")
