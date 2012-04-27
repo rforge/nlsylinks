@@ -3,10 +3,17 @@ rm(list=ls(all=TRUE)) #Clear all the variables before starting a new run.
 require(testthat)
 #test_dir("F:/Projects/RDev/NlsyLinksStaging/Static/tests")
 #trace(ValidatePairLinks)
+isDevelopmentBox <- Sys.info()["nodename"] == "MICKEY"
+if( isDevelopmentBox ) {
+  directory <- "F:/Projects/RDev/NlsyLinksStaging"
+  directoryTests <- file.path(directory, "Static/inst/tests")
+  pathToBeIncorporated <- file.path(directory, "Content/ToBeIncorporated.R")
+}
+if( !isDevelopmentBox ) {
+  directory <- path.package("NlsyLinks")
+  directoryTests <- file.path(directory, "tests")
+}
 
-directory <- "F:/Projects/RDev/NlsyLinksStaging"
-directoryTests <- file.path(directory, "Static/inst/tests")
-pathToBeIncorporated <- file.path(directory, "Content/ToBeIncorporated.R")
 
 ClearMostVariables <- function( ) {
   rm(list=ls(all=TRUE)[!(ls(all=TRUE) %in% c("ClearMostVariables", "directoryTests", "pathToBeIncorporated") )])
@@ -16,7 +23,7 @@ try(detach("package:NlsyLinks"), silent=TRUE)
 require(NlsyLinks)
 #?NlsyLinks
 
-source(pathToBeIncorporated)
+#source(pathToBeIncorporated)
 
 ClearMostVariables()
 test_file(file.path(directoryTests, "AceLavaanGroupFixture.R"))
