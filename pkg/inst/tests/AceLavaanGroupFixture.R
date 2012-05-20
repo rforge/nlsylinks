@@ -1,4 +1,5 @@
 #require(stringr)
+#options(digits=20)
 
 ###########
 context("Lavaan")
@@ -14,10 +15,10 @@ test_that("AceLavaanGroup -MathStandardized", {
   
   ace <- AceLavaanGroup(dsClean)
   
-  expectedASquared <- 0.670103215171409
-  expectedCSquared  <- 0.11670604326754
-  expectedESquared <- 0.213190741561051
-  expectedCaseCount <- 8292
+  expectedASquared <- 0.66818735332097090041 #0.670103215171409
+  expectedCSquared  <- 0.11812265118722645174 #0.11670604326754
+  expectedESquared <- 0.21368999549180262010 #0.213190741561051
+  expectedCaseCount <- 8390 #8292
     
   expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
   expect_equal(object=ace@CSquared, expected=expectedCSquared, scale=1)
@@ -39,10 +40,10 @@ test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
   
   ace <- AceLavaanGroup(dsClean)
   
-  expectedASquared <- 0.687801119966999
-  expectedCSquared  <- 7.10884537223939e-15
-  expectedESquared <- 0.312198880032994
-  expectedCaseCount <- 3478
+  expectedASquared <- .68764112310158664876 #0.687801119966999
+  expectedCSquared  <- 1.6026541226325013592e-17 #7.10884537223939e-15
+  expectedESquared <- .31235887689841324022 #0.312198880032994
+  expectedCaseCount <- 3479 #3478
   
   expect_equal(object=ace@ASquared, expected=expectedASquared, scale=1)
   expect_equal(object=ace@CSquared, expected=expectedCSquared, scale=1)

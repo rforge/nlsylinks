@@ -47,7 +47,7 @@ test_that("CreatePairLinksDoubleEntered -Normal Scenario", {
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 13156877637)
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag, na.rm=T)))  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202)
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 8813.5)  
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75)# 8813.5)  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150)
 
 })
@@ -137,7 +137,7 @@ test_that("CreatePairLinksSingleEntered -Normal Scenario", {
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 6578429612)
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag), na.rm=T), 6578448025)  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202/2)
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 8813.5/2)  
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75/2)  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150/2)
 })
 

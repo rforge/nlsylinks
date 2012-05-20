@@ -1,4 +1,17 @@
 ﻿
+Version 1.001 (2012-05-04)
+------------------------------------------------------------------------------
+
+Updates:
+* Started a FAQ (as a vignette)
+
+Version 1.0 (2012-04-27)
+------------------------------------------------------------------------------
+
+Updates:
+* Additional documentation and unit tests.
+* Changed R-Forge development status from "Beta" to "Production/Stable"
+
 Version 0.29 (2012-04-22)
 ------------------------------------------------------------------------------
 
