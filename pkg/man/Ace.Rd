@@ -52,7 +52,9 @@ library(NlsyLinks) #Load the package into the current R session.
 dsOutcomes <- ExtraOutcomes79
 dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,
   generation=dsOutcomes$Generation)
-dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, 
+dsLinks <- Links79Pair
+dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only the Gen2 Siblings (ie, NLSY79-C subjects)
+dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsLinks, 
   outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
 
 estimatedAdultWeight <- DeFriesFulkerMethod3(
@@ -69,4 +71,5 @@ estimatedMath #ASquared and CSquared should be 0.860 and 0.039.
 
 class(GetDetails(estimatedMath))
 summary(GetDetails(estimatedMath))
+
 }

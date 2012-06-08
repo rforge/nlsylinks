@@ -71,7 +71,7 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
   if( printOutput ) print(paste("Chi Square: ", lavaan::fitMeasures(fit)[["chisq"]])) #Print the Chi Square value
   
   #Extract the UNSCALED ACE components.
-  est <- parameterEstimates(fit)
+  est <- lavaan::parameterEstimates(fit)
   a2 <- est[est$label=="a2", "est"]
   c2 <- est[est$label=="c2", "est"]
   e2 <- est[est$label=="e2", "est"]

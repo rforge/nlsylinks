@@ -55,10 +55,12 @@ The contents of the \code{Details} list depends on the underlying estimation rou
 %}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
+
 showClass("AceEstimate")
 est <- CreateAceEstimate(.5, .2, .3, 40)
 est 
 print(est)
+
 
 }
 \keyword{classes}
