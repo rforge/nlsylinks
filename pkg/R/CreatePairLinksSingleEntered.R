@@ -18,8 +18,8 @@ function( outcomeDataset, linksPairDataset, outcomeNames,
     }
   }
  
-  ds <- merge(x=dsLinksLeftHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag")
-  ds <- merge(x=ds, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag")
+  ds <- merge(x=dsLinksLeftHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag", all.x=TRUE)
+  ds <- merge(x=ds, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag", all.x=TRUE)
  
   rm(dsLinksLeftHand, dsOutcomeSubject1, dsOutcomeSubject2)
   

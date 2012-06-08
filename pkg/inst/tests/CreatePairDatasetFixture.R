@@ -25,6 +25,8 @@ context("CreatePairLinksDoubleEntered")
 ###########
 test_that("CreatePairLinksDoubleEntered -Normal Scenario", {
   dsLinks <- LoadPairFile()
+  dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ]
+  
   dsOutcomes <- LoadOutcomeFile()
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID, generation=dsOutcomes$Generation)
   dsLinksWithExtraOutcome <- CreatePairLinksDoubleEntered(outcomeNames=LoadDefaultOutcomeNames(), outcomeDataset=dsOutcomes, linksPairDataset=dsLinks)
@@ -34,7 +36,6 @@ test_that("CreatePairLinksDoubleEntered -Normal Scenario", {
   expectedColumnNames <- c("Subject1Tag", "Subject2Tag", "ExtendedID", "R", "RelationshipPath", "Weight_1", "WeightStandardized_1", "Weight_2", "WeightStandardized_2")
   actualColumnNames <- colnames(dsLinksWithExtraOutcome)
   expect_equal(actualColumnNames, expectedColumnNames, info="The column names, and their order, should be correct.")
-  
   
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), -0.009590724, tolerance=1e-7, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), 0, tolerance=.01, scale=1)
@@ -48,8 +49,7 @@ test_that("CreatePairLinksDoubleEntered -Normal Scenario", {
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag, na.rm=T)))  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202)
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75)# 8813.5)  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150)
-
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 44300)
 })
 test_that("CreatePairLinksDoubleEntered -Normal Scenario 2 sibs", {
   dsExpected <- data.frame(
@@ -115,6 +115,7 @@ context("CreatePairLinksSingleEntered")
 ###########
 test_that("CreatePairLinksSingleEntered -Normal Scenario", {
   dsLinks <- LoadPairFile()
+  dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ]
   dsOutcomes <- LoadOutcomeFile()
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID, generation=dsOutcomes$Generation)
   dsLinksWithExtraOutcome <- CreatePairLinksSingleEntered(outcomeNames=LoadDefaultOutcomeNames(), outcomeDataset=dsOutcomes, linksPairDataset=dsLinks)
@@ -138,7 +139,7 @@ test_that("CreatePairLinksSingleEntered -Normal Scenario", {
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag), na.rm=T), 6578448025)  
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202/2)
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75/2)  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150/2)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150)
 })
 
 ###########

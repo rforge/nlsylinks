@@ -8,10 +8,12 @@ test_that("AceLavaanGroup -MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
   oName_1 <- "MathStandardized_1" #Stands for Manifest1
   oName_2 <- "MathStandardized_2" #Stands for Manifest2
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
 #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]
   dsClean <- CleanSemAceDataset(dsDirty=dsFull, dsGroupSummary=dsGroupSummary, oName_1=oName_1, oName_2=oName_2)
+  dsClean
   
   ace <- AceLavaanGroup(dsClean)
   
@@ -33,6 +35,7 @@ test_that("AceLavaanGroup -WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
   oName_1 <- "WeightStandardizedForAge19To25_1"
   oName_2 <- "WeightStandardizedForAge19To25_2"
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
 #   rLevels <- dsGroupSummary[dsGroupSummary$Included, "R"]

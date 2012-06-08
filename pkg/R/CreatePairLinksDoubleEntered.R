@@ -23,11 +23,11 @@ function( outcomeDataset, linksPairDataset, outcomeNames,
     }
   }
  
-  dsLeftHand <- merge(x=dsLinksLeftHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag")
-  dsLeftHand <- merge(x=dsLeftHand, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag")
+  dsLeftHand <- merge(x=dsLinksLeftHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag", all.x=TRUE)
+  dsLeftHand <- merge(x=dsLeftHand, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag", all.x=TRUE)
     
-  dsRightHand <- merge(x=dsLinksRightHand, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag")
-  dsRightHand <- merge(x=dsRightHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag")
+  dsRightHand <- merge(x=dsLinksRightHand, y=dsOutcomeSubject2, by.x="Subject2Tag", by.y="SubjectTag", all.x=TRUE)
+  dsRightHand <- merge(x=dsRightHand, y=dsOutcomeSubject1, by.x="Subject1Tag", by.y="SubjectTag", all.x=TRUE)
  
   rm(dsLinksLeftHand, dsLinksRightHand, dsOutcomeSubject1, dsOutcomeSubject2)
   

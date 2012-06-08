@@ -6,7 +6,8 @@ context("DF Method 1")
 test_that("DFMethod1 -MathStandardized", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.97878157157751255468
   expectedCSquared <- -0.026817134106613928907
   expectedESquared <- 0.048035562529101349938
@@ -40,7 +41,8 @@ test_that("DFMethod1 -MathStandardized", {
 test_that("DFMethod1 -Weight", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.82565313328028289153
   expectedCSquared <- -0.10290415590385164346
   expectedESquared <- 0.2772510226235687103
@@ -70,7 +72,8 @@ test_that("DFMethod1 -Weight", {
 test_that("DFMethod1 -WeightStandardized", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.72423466314756224094
   expectedCSquared <- -0.025559809577272250142
   expectedESquared <- 0.30132514642970997798
@@ -99,7 +102,8 @@ test_that("DFMethod1 -WeightStandardized", {
 test_that("DFMethod1 -WeightStandardizedAdult", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.66785026165254879338
   expectedCSquared <-  -0.010839574638099961149
   expectedESquared <- 0.34298931298555113134
@@ -133,7 +137,8 @@ context("DF Method 3")
 test_that("DFMethod3 -MathStandardized", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.85643507600784796185
   expectedCSquared <- 0.040925736575665019878
   expectedESquared <- 0.10263918741648703215
@@ -163,7 +168,8 @@ test_that("DFMethod3 -MathStandardized", {
 test_that("DFMethod3 -Weight", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.76895962684027663325
   expectedCSquared <- -0.074614810657907204572
   expectedESquared <- 0.30565518381763057132
@@ -193,7 +199,8 @@ test_that("DFMethod3 -Weight", {
 test_that("DFMethod3 -WeightStandardized", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.69300023325910620198
   expectedCSquared <- -0.0092843440352404042748
   expectedESquared <- 0.31628411077613416413
@@ -223,7 +230,8 @@ test_that("DFMethod3 -WeightStandardized", {
 test_that("DFMethod3 -WeightStandardizedAdult", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsFull <- Links79Pair[Links79Pair$RelationshipPath=='Gen2Siblings', ]
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsFull, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
   expectedASquared <- 0.63408057021044650359
   expectedCSquared <-  0.0060927344451816986201
   expectedESquared <- 0.35982669534437183856

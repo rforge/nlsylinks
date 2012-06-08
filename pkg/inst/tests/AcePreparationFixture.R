@@ -6,6 +6,7 @@ test_that("CleanSemAceDataset MathStandardized", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
   oName_1 <- "MathStandardized_1" #Stands for Manifest1
   oName_2 <- "MathStandardized_2" #Stands for Manifest2
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
   
   dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, oName_1, oName_2, rName="R" )
@@ -30,6 +31,7 @@ test_that("CleanSemAceDataset WeightStandardizedForAge19To25", {
   dsFull <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
   oName_1 <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
   oName_2 <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
   
   dsClean <- CleanSemAceDataset( dsDirty=dsFull, dsGroupSummary, oName_1, oName_2, rName="R" )
@@ -66,6 +68,7 @@ test_that("Group Summary MathStandardized", {
   oName_1 <- "MathStandardized_1" #Stands for Manifest1
   oName_2 <- "MathStandardized_2" #Stands for Manifest2
    
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
   
   expectedRowCount <- 5
@@ -98,6 +101,7 @@ test_that("Group Summary WeightStandardizedForAge19To25", {
   oName_1 <- "WeightStandardizedForAge19To25_1" #Stands for Manifest1
   oName_2 <- "WeightStandardizedForAge19To25_2" #Stands for Manifest2
   
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2)
   
   expectedRowCount <- 5
@@ -132,6 +136,7 @@ test_that("Group Summary Changed Variable Name for 'R'", {
   rName <- "RRR"
   dsFull <- RenameNlsyColumn(dsFull, "R", rName)
                          
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2, rName)
   
   expectedRowCount <- 5
@@ -166,6 +171,7 @@ test_that("Single Group Summary MathStandardized", {
   dsFull$DummyGroup <- 1
   rName <- "DummyGroup"
   
+  dsFull <- dsFull[dsFull$RelationshipPath=='Gen2Siblings', ]
   dsGroupSummary <- RGroupSummary(dsFull, oName_1, oName_2, rName)
   
   expectedRowCount <- 1
