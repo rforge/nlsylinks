@@ -1,9 +1,23 @@
 ﻿
+Version 1.004 (2012-06-07)
+------------------------------------------------------------------------------
+
+New Features:
+* Added ParentChild links.
+* Added Gen1 links (using only Explicit items).  There will be much more work to these relationship in the next few months.
+* Added Gen2Cousins & AuntNieces.  These will change as the Gen1 links are filled out with implicit information.
+
+Version 1.003 (2012-05-21)
+------------------------------------------------------------------------------
+
+Updates:
+* Additional Documentation.
+
 Version 1.001 (2012-05-04)
 ------------------------------------------------------------------------------
 
 Updates:
-* Started a FAQ (as a vignette)
+* Started a FAQ (as a vignette).
 
 Version 1.0 (2012-04-27)
 ------------------------------------------------------------------------------

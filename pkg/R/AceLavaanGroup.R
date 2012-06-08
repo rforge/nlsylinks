@@ -5,7 +5,8 @@ function( dsClean, estimateA=TRUE, estimateC=TRUE, printOutput=FALSE) {
  
   rLevels <- sort(unique(dsClean$R))
   #These five lines enumerate the path coefficient labels to be inserted into the model statement.
-  rString <- stringr::str_c(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
+  #rString <- stringr::str_c(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
+  rString <- paste(rLevels, collapse=", ") #The output is typically "1, 0.5, 0.375, 0.25"
   # aString <- str_c(rep("a", length(rLevels)), collapse=",") #The output is typically "a,a,a,a"
   # cString <- str_c(rep("c", length(rLevels)), collapse=",") #The output is typically "c,c,c,c"
   # eString <- str_c(rep("e", length(rLevels)), collapse=",") #The output is typically "e,e,e,e"
