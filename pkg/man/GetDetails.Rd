@@ -12,4 +12,7 @@ A generic function for extracting the \code{Details} slot of an \code{AceEstimat
 Here's a filler description.
 \item{\code{signature(object = "AceEstimate")}}{Extracts the \code{Details} slot of an \code{AceEstimation} object.}
 }}
+\author{
+Will Beasley
+}
 \keyword{methods}

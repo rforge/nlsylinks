@@ -40,6 +40,9 @@ The internal version for the links is \code{Links2011V28}.
 The NLSY79 variable HHID (ie, R00001.49) is the source for the \code{ExtendedID} variable.  This is discussed at \url{http://www.nlsinfo.org/nlsy79/docs/79html/79text/hhcomp.htm}.
 ** We need an introduction reference/information for 'R'/Relatedness. **
 }
+\author{
+Will Beasley
+}
 \seealso{
 The \code{LinksPair79} dataset contains columns necessary for a basic BG analysis.  The \code{\link{Links79PairExpanded}} dataset contains further information that might be useful in more complicated BG analyses.
 

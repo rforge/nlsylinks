@@ -49,8 +49,8 @@ library(NlsyLinks) #Load the package into the current R session.
 dsLinks <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
 dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only the Gen2 Siblings (ie, NLSY79-C subjects)
 
-oName_1 <- "MathStandardized_1" #Stands for Manifest1
-oName_2 <- "MathStandardized_2" #Stands for Manifest2
+oName_1 <- "MathStandardized_1" #Stands for Outcome1
+oName_2 <- "MathStandardized_2" #Stands for Outcome2
 
 dsGroupSummary <- RGroupSummary(dsLinks, oName_1, oName_2)
 dsClean <- CleanSemAceDataset(dsDirty=dsLinks, dsGroupSummary, oName_1, oName_2)

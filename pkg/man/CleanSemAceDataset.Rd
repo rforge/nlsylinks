@@ -20,17 +20,19 @@ CleanSemAceDataset(dsDirty, dsGroupSummary, oName_1, oName_2, rName = "R")
 \details{
   The function takes \code{dsDirty} and produces a new \code{data.frame} with the following features:
   \enumerate{
-    \item Only three existing columns are retained: \code{M1}, \code{M2}, and \code{R}.  They assigned these names.
+    \item Only three existing columns are retained: \code{O1}, \code{O2}, and \code{R}.  They are assigned these names.
     \item A new column called \code{GroupID} is created to reflect their group membership (which is based on the \code{R} value).  These valuesa re sequential integers, starting at 1.  The group with the weakest \code{R} is 1.  The group with the strongest \code{R} has the largest \code{GroupID} (this is typically the MZ tiwns).
-    \item Any row is excluded if it has a missing data point for \code{M1}, \code{M2}, or \code{R}.
+    \item Any row is excluded if it has a missing data point for \code{O1}, \code{O2}, or \code{R}.
     \item The \code{data.frame} is sorted by the \code{R} value.  This helps program against the multiple-group SEM API sometimes.
   }
 }
 \value{
-A \code{data.frame} with one row per subject pair.  The \code{data.frame} contains the following variables (which can NOT be changed by the user):
+A \code{data.frame} with one row per subject pair.  The \code{data.frame} contains the following variables (which can NOT be changed by the user through optional parameters):
 \item{ R }{The pair's \code{R} value.}
-\item{ M1 }{The manifest variable for the first subject in each pair.}
-\item{ M2 }{The manifest variable for the second subject in each pair.}
+%\item{ Included }{Boolean value indicating if the group should be included in an SEM}
+%\item{ PairCount }{Boolean value indicating if the group should be included in an SEM}
+\item{ O1 }{The outcome variable for the first subject in each pair.}
+\item{ O2 }{The outcome variable for the second subject in each pair.}
 \item{ GroupID }{ Indicates the pair's group membership.}
 }
 %\references{
@@ -51,10 +53,10 @@ Will Beasley
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 dsLinks <- Links79PairExpanded #Start with the built-in data.frame in NlsyLinks
-dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only the Gen2 Siblings (ie, NLSY79-C subjects)
+dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only NLSY79-C siblings
 
-oName_1 <- "MathStandardized_1" #Stands for Manifest1
-oName_2 <- "MathStandardized_2" #Stands for Manifest2
+oName_1 <- "MathStandardized_1" #Stands for Outcome1
+oName_2 <- "MathStandardized_2" #Stands for Outcome2
 dsGroupSummary <- RGroupSummary(dsLinks, oName_1, oName_2)
 
 dsClean <- CleanSemAceDataset( dsDirty=dsLinks, dsGroupSummary, oName_1, oName_2, rName="R" )

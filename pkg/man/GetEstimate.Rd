@@ -13,5 +13,8 @@
 %%  ~~describe this method here~~
 }
 }}
+\author{
+Will Beasley
+}
 \keyword{methods}
 

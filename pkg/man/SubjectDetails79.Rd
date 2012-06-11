@@ -32,6 +32,9 @@ These variables are useful to many types of analyses (not just behavior genetics
 \source{
 Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}).
 }
+\author{
+Will Beasley
+}
 %\references{
 %%  ~~ possibly secondary sources and usages ~~
 %}
@@ -41,19 +44,31 @@ data(SubjectDetails79)  #Load the dataset from the NlsyLinks package.
 
 summary(SubjectDetails79)
 
-oldPar <- par(mfrow=c(3,2))
-hist(SubjectDetails79$SiblingCountInNls)
-hist(SubjectDetails79$BirthOrderInNls)
-hist(SubjectDetails79$SimilarAgeCount)
-hist(SubjectDetails79$KidCountBio)
-hist(SubjectDetails79$KidCountInNls)
-hist(SubjectDetails79$Mob, 
+oldPar <- par(mfrow=c(3,2), mar=c(2, 2, 1, .5), tcl=0, mgp=c(1,0,0))
+hist(SubjectDetails79$SiblingCountInNls, main="",
+  breaks=seq(from=0, to=max(SubjectDetails79$SiblingCountInNls, na.rm=TRUE), by=1)
+)
+hist(SubjectDetails79$BirthOrderInNls, main="",
+  breaks=seq(from=0, to=max(SubjectDetails79$BirthOrderInNls, na.rm=TRUE), by=1)
+)
+hist(SubjectDetails79$SimilarAgeCount, main="",
+  breaks=seq(from=0, to=max(SubjectDetails79$SimilarAgeCount, na.rm=TRUE), by=1)
+)
+
+hist(SubjectDetails79$KidCountBio, main="",
+  breaks=seq(from=0, to=max(SubjectDetails79$KidCountBio, na.rm=TRUE), by=1)
+)
+hist(SubjectDetails79$KidCountInNls, main="",
+  breaks=seq(from=0, to=max(SubjectDetails79$KidCountInNls, na.rm=TRUE), by=1)
+)
+hist(SubjectDetails79$Mob, main="", 
   breaks=seq.Date(
     from=min(SubjectDetails79$Mob, na.rm=TRUE), 
     to=max(SubjectDetails79$Mob, na.rm=TRUE), 
     by="year")
 )
 par(oldPar)
+
 
 }
 \keyword{datasets}

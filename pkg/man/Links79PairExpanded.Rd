@@ -62,6 +62,9 @@ See \code{\link{Links79Pair}}.
 %\references{
 %%  ~~ possibly secondary sources and usages ~~
 %}
+\author{
+Will Beasley
+}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 data(Links79PairExpanded)  #Load the dataset from the NlsyLinks package.

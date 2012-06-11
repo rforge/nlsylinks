@@ -39,9 +39,9 @@ The \code{VerifyColumnExists} function check that exactly one column exists with
 %\references{
 %% ~put references to the literature/web site here ~
 %}
-%\author{
-%%  ~~who you are~~
-%}
+\author{
+Will Beasley
+}
 %\note{
 %%  ~~further notes~~
 %}

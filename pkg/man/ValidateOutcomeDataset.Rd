@@ -4,7 +4,7 @@
 Validates the schema of datasets containing outcome variables.
 }
 \description{
-The \pkg{NlsyLinks} handles a lot of the plumbing code needed to transform extracted NLSY datasets into a format that statistical routines can interpret.  In some cases, a dataset of measured variables is needed, with one row per subject.  The function validates this measured dataset, to ensure it posses an interpretable schema.  For a specific list of the requirements, see \code{Details} below.
+The \pkg{NlsyLinks} handles a lot of the plumbing code needed to transform extracted NLSY datasets into a format that statistical routines can interpret.  In some cases, a dataset of measured variables is needed, with one row per subject.  This function validates the measured/outcome dataset, to ensure it posses an interpretable schema.  For a specific list of the requirements, see \code{Details} below.
 }
 \usage{
 ValidateOutcomeDataset(dsOutcome, outcomeNames)
@@ -42,8 +42,17 @@ Returns an error (and associated descriptive message) if it false.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %\code{\link{CreatePairLinks}}
 %}
+\author{
+Will Beasley
+}
 \examples{
-##Need something here
+library(NlsyLinks) #Load the package into the current R session.
+ds <- ExtraOutcomes79
+outcomeNames <- c("MathStandardized", "Weight")
+ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=outcomeNames) #Returns TRUE.
+
+outcomeNamesBad <- c("MathMisspelled", "Weight")
+#ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=outcomeNamesBad) #Throws error.
 }
 
 \keyword{ validation }

@@ -15,13 +15,13 @@ RGroupSummary(ds, oName_1, oName_2, rName, determinantThreshold=1e-5)
 
 \arguments{
   \item{ds}{The \code{data.frame} containing the following variables:}
-  \item{oName_1}{The name of the manifest variable corresponding to the first subject in the pair.}
-  \item{oName_2}{The name of the manifest variable corresponding to the first subject in the pair.}
+  \item{oName_1}{The name of the outcome variable corresponding to the first subject in the pair.}
+  \item{oName_2}{The name of the outcome variable corresponding to the first subject in the pair.}
   \item{rName}{The name of the variable specifying the pair's \code{Relatedness} coefficient.}
   \item{determinantThreshold}{The minimum value the covariance matrix's determinant (for the group) should exceed to be considered Positive Definite.}
 }
 \details{
-This function doesn't specific to an ACE model and groups defined by \code{R}.  It could be applied to any multiple-group SEM with two manifest variables.  In the future, we may generalize it beyond two manifest variables.
+This function doesn't specific to an ACE model and groups defined by \code{R}.  It could be applied to any multiple-group SEM with two manifest/outcome variables.  In the future, we may generalize it beyond two manifest variables.
 
 To get summary stats for the entire sample, create a dummy indicator variable that assigns everyone to the same group.  See the second example below.
 
@@ -31,11 +31,11 @@ The default determinantThreshold value is nonzero, in order to forgive slight nu
 A \code{data.frame} with one row per group.  The \code{data.frame} contains the following variables:
 \item{ R }{The group's \code{R} value.  Note the name of this variable can be changed by the user, by specifying a non-default value to the \code{rName} argument.}
 \item{ Included }{Indicates if the group should be included in a multiple-group SEM.}
-\item{ PairCount }{The number of pairs in the group with \emph{complete} data for \code{R} and the two manifest variables.}
-\item{ M1Variance }{ The variance (of the manifest variable) among the group's first members. }
-\item{ M2Variance }{ The variance (of the manifest variable) among the group's second members. }
-\item{ M1M2Covariance }{ The covariance (of the manifest variable) across the group's first and second members.}
-\item{ Correlation }{The correlation (of the manifest variable) across the group's first and second members.}
+\item{ PairCount }{The number of pairs in the group with \emph{complete} data for \code{R} and the two outcome/manifest variables.}
+\item{ O1Variance }{ The variance (of the outcome variable) among the group's first members. }
+\item{ O2Variance }{ The variance (of the outcome variable) among the group's second members. }
+\item{ O1O2Covariance }{ The covariance (of the outcome variable) across the group's first and second members.}
+\item{ Correlation }{The correlation (of the outcome variable) across the group's first and second members.}
 \item{ Determinant }{ The determinant of the group's covariance matrix.}
 \item{ PosDefinite }{ Indicates if the group's covariance matrix is positive definite.}
 }
@@ -59,8 +59,8 @@ Will Beasley and David Bard
 library(NlsyLinks) #Load the package into the current R session.
 dsLinks <- Links79PairExpanded  #Load the dataset from the NlsyLinks package.
 dsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ]
-oName_1 <- "MathStandardized_1" #Stands for Manifest1
-oName_2 <- "MathStandardized_2" #Stands for Manifest2
+oName_1 <- "MathStandardized_1" #Stands for Outcome1
+oName_2 <- "MathStandardized_2" #Stands for Outcome2
 dsGroupSummary <- RGroupSummary(dsLinks, oName_1, oName_2)
 dsGroupSummary
 

@@ -38,6 +38,9 @@ The function does seven things.
 %\seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 %}
+\author{
+Will Beasley
+}
 \examples{
 ## Not run:
 #filePathGen2 <- "F:/Projects/RDev/NlsyLinksStaging/Datasets/Gen2Birth.csv"

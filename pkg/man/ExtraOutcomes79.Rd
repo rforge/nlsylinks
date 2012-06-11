@@ -40,6 +40,9 @@ Data were simplied (to one value per subject) by Kelly Meredith in January 2012.
 %\references{
 %%  ~~ possibly secondary sources and usages ~~
 %}
+\author{
+Will Beasley
+}
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 data(ExtraOutcomes79)  #Load the dataset from the NlsyLinks package.
