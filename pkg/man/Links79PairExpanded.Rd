@@ -15,12 +15,14 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
 \format{
   A data frame with 11,075 observations on the following 22 variables.  There is one row per unique pair of subjects, irrespective of order.
   \describe{
+  
     \item{\code{ExtendedID}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{Subject1Tag}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{Subject2Tag}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{R}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{RelationshipPath}}{see the variable of the same name in \code{\link{Links79Pair}}}    
-    \item{\code{MultipleBirth}}{Indicates if the pair are twins (or triplets).  This variable is a factor, with levels \code{No}=0, \code{Twin}=2, \code{Triplet}=3, \code{DoNotKnow}=255.}
+    \item{\code{EverSharedHouse}}{Indicate if the pair likely live in the same house.  This is \code{TRUE} for \code{Gen1Housemates}, \code{Gen2Siblings}, and \code{ParentChild}. This is \code{FALSE} for \code{AuntNiece} and \code{Gen2Cousins}}
+ %\item{\code{MultipleBirth}}{Indicates if the pair are twins (or triplets).  This variable is a factor, with levels \code{No}=0, \code{Twin}=2, \code{Triplet}=3, \code{DoNotKnow}=255.}
     \item{\code{IsMz}}{Indicates if the pair is from the same zygote (ie, they are identical twins/triplets).  This variable is a factor, with levels \code{No}=0, \code{Yes}=1, \code{DoNotKnow}=255.}
     \item{\code{Subject1LastSurvey}}{The year of Subject1's most recently completed survey. This may be different that the survey's administration date.}
     \item{\code{Subject2LastSurvey}}{The year of Subject2's most recently completed survey. This may be different that the survey's administration date.}

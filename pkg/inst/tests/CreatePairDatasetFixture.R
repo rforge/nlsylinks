@@ -30,26 +30,26 @@ test_that("CreatePairLinksDoubleEntered -Normal Scenario", {
   dsOutcomes <- LoadOutcomeFile()
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID, generation=dsOutcomes$Generation)
   dsLinksWithExtraOutcome <- CreatePairLinksDoubleEntered(outcomeNames=LoadDefaultOutcomeNames(), outcomeDataset=dsOutcomes, linksPairDataset=dsLinks)
-  expect_equal(nrow(dsLinksWithExtraOutcome), 22150, info="The number of rows in the pairs links should be correct.")
+  expect_equal(nrow(dsLinksWithExtraOutcome), 22176, info="The number of rows in the pairs links should be correct.")
   expect_equal(ncol(dsLinksWithExtraOutcome), 9, info="The number of columns in the pairs links should be correct.")  
   
   expectedColumnNames <- c("Subject1Tag", "Subject2Tag", "ExtendedID", "R", "RelationshipPath", "Weight_1", "WeightStandardized_1", "Weight_2", "WeightStandardized_2")
   actualColumnNames <- colnames(dsLinksWithExtraOutcome)
   expect_equal(actualColumnNames, expectedColumnNames, info="The column names, and their order, should be correct.")
   
-  expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), -0.009590724, tolerance=1e-7, scale=1)
+  expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), -0.009437706, tolerance=1e-7, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), 0, tolerance=.01, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), mean(dsLinksWithExtraOutcome$WeightStandardized_2, na.rm=T))#, tolerance=.01, scale=1)
   
-  expect_equal(mean(dsLinksWithExtraOutcome$Weight_1, na.rm=T), 161.9422, tolerance=1e-5, scale=1)
+  expect_equal(mean(dsLinksWithExtraOutcome$Weight_1, na.rm=T), 161.949, tolerance=1e-4, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$Weight_1, na.rm=T), mean(dsLinksWithExtraOutcome$Weight_2, na.rm=T))#, tolerance=.01, scale=1)  
 
   #The following aren't tested against meaningful values, but they do provide some regression testing.
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 13156877637)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 13164976703)
   expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag, na.rm=T)))  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202)
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75)# 8813.5)  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 44300)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131575156)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9247.5) #9235.75)# 8813.5)  
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 44352)
 })
 test_that("CreatePairLinksDoubleEntered -Normal Scenario 2 sibs", {
   dsExpected <- data.frame(
@@ -119,27 +119,27 @@ test_that("CreatePairLinksSingleEntered -Normal Scenario", {
   dsOutcomes <- LoadOutcomeFile()
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID, generation=dsOutcomes$Generation)
   dsLinksWithExtraOutcome <- CreatePairLinksSingleEntered(outcomeNames=LoadDefaultOutcomeNames(), outcomeDataset=dsOutcomes, linksPairDataset=dsLinks)
-  expect_equal(nrow(dsLinksWithExtraOutcome), 11075, info="The number of rows in the pairs links should be correct.")
+  expect_equal(nrow(dsLinksWithExtraOutcome), 11088, info="The number of rows in the pairs links should be correct.")
   expect_equal(ncol(dsLinksWithExtraOutcome), 9, info="The number of columns in the pairs links should be correct.")  
   
   expectedColumnNames <- c("Subject1Tag", "Subject2Tag", "ExtendedID", "R", "RelationshipPath", "Weight_1", "WeightStandardized_1", "Weight_2", "WeightStandardized_2")
   actualColumnNames <- colnames(dsLinksWithExtraOutcome)
   expect_equal(actualColumnNames, expectedColumnNames, info="The column names, and their order, should be correct.")
   
-  expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), 0.0065548062774566469, tolerance=1e-15, scale=1)
+  expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), 0.0068415073665532879, tolerance=1e-15, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_1, na.rm=T), 0, tolerance=.01, scale=1)  
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_2, na.rm=T),  -0.028869654720259843, tolerance=1e-15, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$WeightStandardized_2, na.rm=T), 0, tolerance=.03, scale=1)
     
-  expect_equal(mean(dsLinksWithExtraOutcome$Weight_1, na.rm=T),  167.02198798594583, tolerance=1e-15, scale=1)
+  expect_equal(mean(dsLinksWithExtraOutcome$Weight_1, na.rm=T),  167.03616780045351, tolerance=1e-15, scale=1)
   expect_equal(mean(dsLinksWithExtraOutcome$Weight_2, na.rm=T), 155.87657328461225, tolerance=1e-15, scale=1)
   
   #The following aren't tested against meaningful values, but they do provide some regression testing.
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 6578429612)
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag), na.rm=T), 6578448025)  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 131494202/2)
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 9235.75/2)  
-  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22150)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject1Tag), na.rm=T), 6582479134)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$Subject2Tag), na.rm=T), 6582497569)  
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$ExtendedID), na.rm=T), 65787578)
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$R), na.rm=T), 4623.75)  
+  expect_equal(sum(as.numeric(dsLinksWithExtraOutcome$RelationshipPath), na.rm=T), 22176)
 })
 
 ###########

@@ -7,7 +7,7 @@ expectedColumnCount <- 5
 actualColumnCount <- ncol(Links79Pair)
 stopifnot(all.equal(expectedColumnCount, actualColumnCount))
 
-expectedRowCount <- 42714 #11075
+expectedRowCount <- 42773 #42714 #11075
 actualRowCount <- nrow(Links79Pair)
 stopifnot(all.equal(expectedRowCount, actualRowCount))
 
@@ -20,6 +20,6 @@ expectedColumnCount <- 25
 actualColumnCount <- ncol(Links79PairExpanded)
 stopifnot(all.equal(expectedColumnCount, actualColumnCount))
 
-expectedRowCount <- 42714 #11075
+expectedRowCount <- 42773 #42714 #11075
 actualRowCount <- nrow(Links79PairExpanded)
 stopifnot(all.equal(expectedRowCount, actualRowCount))

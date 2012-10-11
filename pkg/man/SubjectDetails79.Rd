@@ -60,12 +60,12 @@ hist(SubjectDetails79$KidCountBio, main="",
 hist(SubjectDetails79$KidCountInNls, main="",
      breaks=seq(from=0, to=max(SubjectDetails79$KidCountInNls, na.rm=TRUE), by=1)
 )
-hist(SubjectDetails79$Mob, main="", 
-     breaks=seq.Date(
-       from=min(SubjectDetails79$Mob, na.rm=TRUE), 
-       to=max(SubjectDetails79$Mob, na.rm=TRUE), 
-       by="year")
-)
+#hist(SubjectDetails79$Mob, main="", 
+#     breaks=seq.Date(
+#       from=min(SubjectDetails79$Mob, na.rm=TRUE), 
+#       to=max(SubjectDetails79$Mob, na.rm=TRUE), 
+#       by="year")
+#)
 par(oldPar)
 }
 \keyword{datasets}

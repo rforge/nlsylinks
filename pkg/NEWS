@@ -1,4 +1,10 @@
-﻿Version 1.010 (2012-10-11)
+﻿Version 1.011 (2012-10-11)
+------------------------------------------------------------------------------
+Updates:
+* Gen1 Links are more thorough (but still in a beta state)
+* Gen1 and Gen2 information uses the NLSY 2010 survey wave (released this Spring 2012)
+
+Version 1.010 (2012-10-11)
 ------------------------------------------------------------------------------
 * Refreshing after development interrupt to make sure everything builds and tests correctly
 
