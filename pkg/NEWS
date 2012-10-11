@@ -1,4 +1,8 @@
-﻿Version 1.007 (2012-06-08)
+﻿Version 1.010 (2012-10-11)
+------------------------------------------------------------------------------
+* Refreshing after development interrupt to make sure everything builds and tests correctly
+
+Version 1.007 (2012-06-08)
 ------------------------------------------------------------------------------
 
 Updates:
