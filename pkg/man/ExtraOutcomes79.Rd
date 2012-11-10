@@ -16,11 +16,15 @@ Currently this dataset contains only Gen2 subjects.  However, it soon will inclu
     \item{\code{SubjectTag}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{SubjectID}}{The ID value assigned by NLS to the first subject.  For Gen1 Subjects, this is their "CaseID" (ie, R00001.00).  For Gen2 subjects, this is their "CID" (ie, C00001.00).}
     \item{\code{Generation}}{The generation of the subject.  Values are either 1 or 2, representing Gen1 and Gen2.  Note that this variable is not a \code{factor} (in constrast with data frames like \code{\link{Links79Pair}}).   This dataset is supposed to mimick the dataset provided by the researcher, which typically will not have been converted to a \code{factor}.}
-    \item{\code{MathStandardized}}{The standardized PIAT math score, with mean 100.}
-    \item{\code{Weight}}{The subject's last recorded weight (in pounds).}
-    \item{\code{WeightForAge19To25}}{The subject's weight, when aged between 19 and 25 years old (in pounds).  If multiple measurements were available between 19 & 25 (inclusive), the youngest was taken.}
-    \item{\code{WeightStandardized}}{The subject's last recorded weight, standardized by gender (as a z-score).}
-    \item{\code{WeightStandardizedForAge19To25}}{The subject's last recorded weight, standardized by gender, when aged between 19 and 25 years old (as a z-score).  If multiple measurements were available between 19 & 25 (inclusive), the youngest was taken.}
+    \item{\code{AfqtRescaled2006Gaussified}}{Armed Forces Qualification Test Score for Gen1.}
+    \item{\code{HeightZGender}}{The subject's height, standardized by gender (see Details).}
+    \item{\code{HeightZGenderAge}}{The subject's height, standardized by gender and age (see Details).}
+    \item{\code{WeightZGender}}{The subject's weight, standardized by gender (see Details).}
+    \item{\code{WeightZGenderAge}}{The subject's weight, standardized by gender and age (see Details).}
+    \item{\code{Afi}}{Self-reported age of first intercourse (see Details).}
+    \item{\code{Afm}}{Self-reported age of first menstration (see Details).}
+    \item{\code{MathStandardized}}{Standardized PIAT Math score for Gen2 (see Details).}
+    
   }
 }
 %\details{
@@ -33,9 +37,7 @@ The \code{SubjectTag} variable uniquely identify subjects.  For Gen2 subjects, t
 
 For Gen2, an NLSY79 variable of \code{MathStandardized} is C00000.00? **Kelly, can you give me an RNum for this? **
 
-For Gen2, an NLSY79 variable of \code{Weight} is C00000.00? **Kelly, can you give me an RNum for this too? **
-
-Data were simplied (to one value per subject) by Kelly Meredith in January 2012.
+\code{Afi}, \code{Afm}, and \code{MathStandardized} values were simplied (to one value per subject) by Kelly Meredith in January 2012 using the Sept 15, 2010 release of NLSY data.
 }
 %\references{
 %%  ~~ possibly secondary sources and usages ~~
@@ -54,10 +56,10 @@ summary(ExtraOutcomes79)
 oldPar <- par(mfrow=c(3,2))
 hist(ExtraOutcomes79$Generation)
 hist(ExtraOutcomes79$MathStandardized)
-hist(ExtraOutcomes79$Weight)
-hist(ExtraOutcomes79$WeightForAge19To25)
-hist(ExtraOutcomes79$WeightStandardized)
-hist(ExtraOutcomes79$WeightStandardizedForAge19To25)
+hist(ExtraOutcomes79$HeightZGenderAge)
+hist(ExtraOutcomes79$WeightZGenderAge)
+hist(ExtraOutcomes79$Afi)
+hist(ExtraOutcomes79$Afm)
 par(oldPar)
 }
 \keyword{datasets}

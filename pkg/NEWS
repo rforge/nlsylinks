@@ -1,6 +1,12 @@
-﻿Version 1.013 (2012-11-08)
+﻿Version 1.014 (2012-11-09)
 ------------------------------------------------------------------------------
-Rebuilt For R2.15.2 with with RTools216.exe.
+Updates:
+* Based on gecodoe variables, five Gen1 ambiguous twin was demoted to R=0 (two were R=.5; three were R=NULL).
+
+Version 1.013 (2012-11-08)
+------------------------------------------------------------------------------
+Updates:
+* Rebuilt For R2.15.2 with with RTools216.exe.
 
 Version 1.012 (2012-10-11)
 ------------------------------------------------------------------------------

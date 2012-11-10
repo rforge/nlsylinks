@@ -48,10 +48,10 @@ Will Beasley
 \examples{
 library(NlsyLinks) #Load the package into the current R session.
 ds <- ExtraOutcomes79
-outcomeNames <- c("MathStandardized", "Weight")
+outcomeNames <- c("MathStandardized", "WeightZGenderAge")
 ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=outcomeNames) #Returns TRUE.
 
-outcomeNamesBad <- c("MathMisspelled", "Weight")
+outcomeNamesBad <- c("MathMisspelled", "WeightZGenderAge")
 #ValidateOutcomeDataset(dsOutcome=ds, outcomeNames=outcomeNamesBad) #Throws error.
 }
 
