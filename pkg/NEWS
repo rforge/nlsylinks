@@ -1,4 +1,9 @@
-﻿Version 1.014 (2012-11-09)
+﻿Version 1.015 (2012-11-10)
+------------------------------------------------------------------------------
+Updates:
+* Added outcome variables for Gen1.  Renamed some outcome variables for Gen2.
+
+Version 1.014 (2012-11-09)
 ------------------------------------------------------------------------------
 Updates:
 * Based on gecodoe variables, five Gen1 ambiguous twin was demoted to R=0 (two were R=.5; three were R=NULL).
