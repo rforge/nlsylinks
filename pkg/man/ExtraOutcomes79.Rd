@@ -31,11 +31,11 @@ Currently this dataset contains only Gen2 subjects.  However, it soon will inclu
 %%  ~~ If necessary, more details than the __description__ above ~~
 %}
 \source{
-Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}). **Kelly, is this correct? **
+Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}).
 
 The \code{SubjectTag} variable uniquely identify subjects.  For Gen2 subjects, the SubjectTag is identical to their CID (ie, C00001.00 -the SubjectID assigned in the NLSY79-Children files).  However for Gen1 subjects, the SubjectTag is their CaseID (ie, R00001.00), with "00" appended.  This manipulation is necessary to identify subjects uniquely in inter-generational datasets.  A Gen1 subject with an ID of 43 has a \code{SubjectTag} of 4300.  The SubjectTags of her four children remain 4301, 4302, 4303, and 4304.
 
-For Gen2, an NLSY79 variable of \code{MathStandardized} is C00000.00? **Kelly, can you give me an RNum for this? **
+For Gen2, an NLSY79 variable of \code{MathStandardized} is C0580100.00.
 
 \code{Afi}, \code{Afm}, and \code{MathStandardized} values were simplied (to one value per subject) by Kelly Meredith in January 2012 using the Sept 15, 2010 release of NLSY data.
 }

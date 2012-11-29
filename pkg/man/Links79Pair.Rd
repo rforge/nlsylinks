@@ -7,9 +7,8 @@ Kinship linking file for pairs of relatives in the NLSY79 and NLSY79 Children an
 \description{
 This dataset specifies the relatedness coefficient (ie, '\code{R}') between subjects in the same extended family.  Each row represents a unique relationship pair.  An extended family with \eqn{k} subjects will have \eqn{k}(\eqn{k}-1)/2 rows.  Typically, Subject1 is older while Subject2 is younger.
 
-The dataset *eventually will* contain Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm)}.
+The dataset contains Gen1 and Gen2 subjects.  "Gen1" refers to subjects in the original NLSY79 sample (\url{http://www.bls.gov/nls/nlsy79.htm}).  "Gen2" subjects are the biological children of the Gen1 females -ie, those in the NLSY79 Children and Young Adults sample (\url{http://www.bls.gov/nls/nlsy79ch.htm)}.
 
-Currently this dataset contains only Gen2 siblings.  However, it soon will be generalized to the five categories specified by the \code{RelationshipPath} variable.  Code written using this dataset should NOT assume it contains only Gen2 sibiling pairs.  See below for an example of filtering the relationship category.
 }
 \usage{data(Links79Pair)}
 \format{
@@ -34,7 +33,7 @@ MZ twins have \code{R}=1.  DZ twins and full-siblings have \code{R}=.5.  Half-si
 \source{
 Gen1 information comes from the May 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79.htm}{NLSY79 sample}.  Gen2 information comes from the Sept 15, 2010 release of the \href{http://www.bls.gov/nls/nlsy79ch.htm}{NLSY79 Children and Young Adults sample}.  Data were extracted with the NLS Investigator (\url{https://www.nlsinfo.org/investigator/}).
 
-The internal version for the links is \code{Links2011V28}.
+The internal version for the links is \code{Links2011V51}.
 }
 \references{
 The NLSY79 variable HHID (ie, R00001.49) is the source for the \code{ExtendedID} variable.  This is discussed at \url{http://www.nlsinfo.org/nlsy79/docs/79html/79text/hhcomp.htm}.

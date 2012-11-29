@@ -54,8 +54,6 @@ A distinction is made between 'Explicit' and 'Implicit' information.  Explicit i
 
 'Interpolation' is our lingo when other siblings are used to leverage insight into the current pair.  For example, assume Subject 101, 102, and 103 have the same mother.  Further assume 101 and 102 report they share a biological father, and that 101 and 103 share one too.  Finally, assume that we don't have information about the relationship between 102 and 103.  If we are comfortable with our level of uncertainty of these determinations, then we can interpolate/infer that 102 and 103 are full-siblings as well.
 
-**Alternate wording that I like less: For example, assume Subject 101, 102, and 103 have the same mother.  And that we are reasonable sure than 101 and 102 are full-siblings, and that 101 and 103 are full-siblings.  If we are comfortable with our level of uncertainty of these two determinations, then we can interpolate/infer that 102 and 103 are full-siblings as well.**
-
 The math and weight scores are duplicated from \code{\link{ExtraOutcomes79}}, but are included here to make some examples more concise and accessible.
 }
 \source{
