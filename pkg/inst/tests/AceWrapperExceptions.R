@@ -6,7 +6,7 @@ context("Ace Wrapper Exceptions")
 test_that("AceUnivariate -NULL method", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "WeightZGenderAge"))
   
   expect_error(
     AceUnivariate(method=NULL, dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
@@ -16,7 +16,7 @@ test_that("AceUnivariate -NULL method", {
 test_that("AceUnivariate -blank method", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "WeightZGenderAge"))
   
   expect_error(
     AceUnivariate(method="", dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
@@ -26,7 +26,7 @@ test_that("AceUnivariate -blank method", {
 test_that("AceUnivariate -unrecognized name method", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "WeightZGenderAge"))
   
   expect_error(
     AceUnivariate(method="ddddd", dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),
@@ -36,7 +36,7 @@ test_that("AceUnivariate -unrecognized name method", {
 test_that("AceUnivariate -multiple methods passed", {
   dsOutcomes <- ExtraOutcomes79
   dsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,generation=dsOutcomes$Generation)
-  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "Weight", "WeightStandardized", "WeightStandardizedForAge19To25"))
+  dsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=Links79Pair, outcomeNames=c("MathStandardized", "WeightZGenderAge"))
   
   expect_error(
     AceUnivariate(method=c("DeFriesFulkerMethod1", "DeFriesFulkerMethod3"), dataSet=dsOutcomes, oName_1="MathStandardized_1", oName_2="MathStandardized_2"),

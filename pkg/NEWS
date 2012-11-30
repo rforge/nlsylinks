@@ -1,4 +1,9 @@
-﻿Version 1.015 (2012-11-10)
+﻿Version 1.017 (2012-11-29)
+------------------------------------------------------------------------------
+Updates:
+* Removed code that assigned all unassigned siblings to .375.  This doesn't make sense for Gen1.
+
+Version 1.015 (2012-11-10)
 ------------------------------------------------------------------------------
 Updates:
 * Added outcome variables for Gen1.  Renamed some outcome variables for Gen2.

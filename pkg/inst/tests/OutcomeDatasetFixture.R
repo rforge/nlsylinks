@@ -8,7 +8,8 @@ LoadOutcomeFile <- function( ) {
   return( ExtraOutcomes79 )
 }
 LoadDefaultOutcomeNames <- function( ) {
-  return( c("MathStandardized", "Weight") )
+  return( c("AfqtRescaled2006Gaussified", "HeightZGender", "HeightZGenderAge", 
+            "WeightZGender", "WeightZGenderAge", "Afi", "Afm", "MathStandardized") )
 }
 
 
