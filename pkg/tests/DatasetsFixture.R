@@ -16,7 +16,7 @@ rm(list=ls(all=TRUE))
 require(NlsyLinks)
 data(Links79PairExpanded)
 
-expectedColumnCount <- 25
+expectedColumnCount <- 26
 actualColumnCount <- ncol(Links79PairExpanded)
 stopifnot(all.equal(expectedColumnCount, actualColumnCount))
 

@@ -20,6 +20,7 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
     \item{\code{Subject1Tag}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{Subject2Tag}}{see the variable of the same name in \code{\link{Links79Pair}}}
     \item{\code{R}}{see the variable of the same name in \code{\link{Links79Pair}}}
+    \item{\code{RFull}}{This is a superset of \code{R}.  This includes all the \emph{R} values we estimated, while \code{R} (i.e., the variable above)  excludes values like \emph{R}=0 for \code{Gen1Housemates}, and the associated relationships based on this \emph{R} value (i.e., \code{Gen2Cousin}s and \code{AuntNiece}s).}
     \item{\code{RelationshipPath}}{see the variable of the same name in \code{\link{Links79Pair}}}    
     \item{\code{EverSharedHouse}}{Indicate if the pair likely live in the same house.  This is \code{TRUE} for \code{Gen1Housemates}, \code{Gen2Siblings}, and \code{ParentChild}. This is \code{FALSE} for \code{AuntNiece} and \code{Gen2Cousins}}
  %\item{\code{MultipleBirth}}{Indicates if the pair are twins (or triplets).  This variable is a factor, with levels \code{No}=0, \code{Twin}=2, \code{Triplet}=3, \code{DoNotKnow}=255.}
@@ -40,8 +41,8 @@ Currently this dataset contains only Gen2 siblings.  However, it soon will be ge
     \item{\code{Subject2ID}}{The ID value assigned by NLS to the second subject.}
     \item{\code{MathStandardized_1}}{The PIAT-Math score for Subject1.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
     \item{\code{MathStandardized_2}}{The PIAT-Math score for Subject2.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
-    \item{\code{WeightStandardizedForAge19To25_1}}{The early adult weight for Subject1.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
-    \item{\code{WeightStandardizedForAge19To25_2}}{The early adult weight for Subject2.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
+    \item{\code{HeightZGenderAge_1}}{The early adult height for Subject1.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
+    \item{\code{HeightZGenderAge_2}}{The early adult height for Subject2.  See \code{\link{ExtraOutcomes79}} for more information about its source.}
  
   }
 }
@@ -54,7 +55,7 @@ A distinction is made between 'Explicit' and 'Implicit' information.  Explicit i
 
 'Interpolation' is our lingo when other siblings are used to leverage insight into the current pair.  For example, assume Subject 101, 102, and 103 have the same mother.  Further assume 101 and 102 report they share a biological father, and that 101 and 103 share one too.  Finally, assume that we don't have information about the relationship between 102 and 103.  If we are comfortable with our level of uncertainty of these determinations, then we can interpolate/infer that 102 and 103 are full-siblings as well.
 
-The math and weight scores are duplicated from \code{\link{ExtraOutcomes79}}, but are included here to make some examples more concise and accessible.
+The math and height scores are duplicated from \code{\link{ExtraOutcomes79}}, but are included here to make some examples more concise and accessible.
 }
 \source{
 See \code{\link{Links79Pair}}.
