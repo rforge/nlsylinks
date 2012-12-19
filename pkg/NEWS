@@ -1,8 +1,7 @@
-﻿Version 1.018 (2012-12-09)
+﻿Version 1.200 (2012-12-18)
 ------------------------------------------------------------------------------
 Updates:
 * Renamed `R` to `RFull`.  `RFull` contains all the _R_ values we have.  `R` excludes _R_ values in Gen1Housemates if they're 0, .375, or .75.  The associated relationships (ie, Gen2Cousins and AuntNieces) become null for _R_, but not for _RFull_.
-*
 
 Version 1.017 (2012-11-29)
 ------------------------------------------------------------------------------
