@@ -1,0 +1,16 @@
+{
+    "contents" : "library(NlsyLinks) #Load the package into the current R session.\ndsOutcomes <- ExtraOutcomes79\ndsOutcomes$SubjectTag <- CreateSubjectTag(subjectID=dsOutcomes$SubjectID,\n                                          generation=dsOutcomes$Generation)\ndsLinks <- Links79Pair\ndsLinks <- dsLinks[dsLinks$RelationshipPath=='Gen2Siblings', ] #Use only the Gen2 Siblings (ie, NLSY79-C subjects)\ndsDF <- CreatePairLinksDoubleEntered(outcomeDataset=dsOutcomes, linksPairDataset=dsLinks, \n                                     outcomeNames=c(\"MathStandardized\", \"HeightZGenderAge\", \"WeightZGenderAge\"))\n\nestimatedAdultHeight <- DeFriesFulkerMethod3(\n  dataSet=dsDF,    \n  oName_1=\"HeightZGenderAge_1\", \n  oName_2=\"HeightZGenderAge_2\")  \nestimatedAdultHeight #ASquared and CSquared should be 0.606 and 0.105 for this rough analysis.\n\nestimatedMath <- DeFriesFulkerMethod3(\n  dataSet=dsDF,    \n  oName_1=\"MathStandardized_1\", \n  oName_2=\"MathStandardized_2\")\nestimatedMath #ASquared and CSquared should be 0.878 and 0.048.\n\nclass(GetDetails(estimatedMath))\nsummary(GetDetails(estimatedMath))",
+    "created" : 1359423648684.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3807211493",
+    "id" : "B2C84404",
+    "lastKnownWriteTime" : 1358112240,
+    "path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
