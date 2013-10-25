@@ -7,6 +7,13 @@ Date: 2013-01-28
 Author: Will Beasley, Joe Rodgers, David Bard, Michael Hunter, and Kelly
     Meredith
 Maintainer: Will Beasley <wibeasley@hotmail.com>
+Description: Utilities and kinship information for Behavioral Genetics and
+    Developmental research using the NLSY.
+URL: https://r-forge.r-project.org/projects/nlsylinks/
+Depends:
+    R(>= 2.14.0),
+    Matrix(>= 1.0),
+    stats
 Imports:
     methods,
     lavaan
@@ -14,13 +21,8 @@ Suggests:
     ggplot2,
     plyr,
     testthat
-Description: Utilities and kinship information for Behavioral Genetics and
-    Developmental research using the NLSY.
 License: GPL
-URL: https://r-forge.r-project.org/projects/nlsylinks/
-LazyLoad: TRUE
 LazyData: TRUE
-LazyDataCompression: xz
 Collate:
     'AceEstimate.R'
     'AceLavaanGroup.R'
@@ -39,8 +41,8 @@ Collate:
     'Links79PairDoc.R'
     'Links79PairExpandedDoc.R'
     'NlsyLinks.R'
-    'RGroupSummary.R'
     'ReadCsvNlsy79Gen2.R'
+    'RGroupSummary.R'
     'SubjectDetails79Doc.R'
     'ValidateOutcomeDataset.R'
     'ValidatePairLinks.R'
