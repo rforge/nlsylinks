@@ -9,7 +9,6 @@ devtools::check_doc() #Should return NULL
 
 devtools::run_examples(); dev.off() #This overwrites the NAMESPACE file too
 # devtools::run_examples(, "Ace.Rd")
-devtools::check_doc()
 devtools::test()
 
 devtools::build()#args="--resave-data")
