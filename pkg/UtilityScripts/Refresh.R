@@ -22,5 +22,5 @@ devtools::revdep_check(pkg="NlsyLinks", recursive=TRUE)
 # devtools::revdep_check(pkg="Wats", recursive=TRUE)
 devtools::release(check=FALSE) #Careful, the last question ultimately uploads it to CRAN, where you can't delete/reverse your decision.
 
-# mean(is.na(NlsyLinks::Links79PairExpanded[NlsyLinks::Links79PairExpanded$RelationshipPath=="Gen1Housemates", "RFull"]))
-# sum(is.na(NlsyLinks::Links79PairExpanded[NlsyLinks::Links79PairExpanded$RelationshipPath=="Gen1Housemates", "RFull"]))
+mean(is.na(NlsyLinks::Links79PairExpanded[NlsyLinks::Links79PairExpanded$RelationshipPath=="Gen1Housemates", "RFull"]))
+sum(is.na(NlsyLinks::Links79PairExpanded[NlsyLinks::Links79PairExpanded$RelationshipPath=="Gen1Housemates", "RFull"]))
