@@ -14,11 +14,10 @@ directoryDatasetsRda <- "./data" #These RDAs are derived from the CSV, and inclu
 
 pathInputLinks <- file.path(directoryDatasetsCsv, "Links2011V83.csv")
 
+pathOutputExtraOutcomes <- file.path(directoryDatasetsRda, "ExtraOutcomes79.rda")
 pathOutputLinkTrim <- file.path(directoryDatasetsRda, "Links79Pair.rda")
 pathOutputLinkExpanded <- file.path(directoryDatasetsRda, "Links79PairExpanded.rda")
-
-pathOutputSubjectDetailsCsv <- file.path(directoryDatasetsCsv, "SubjectDetails79.csv")
-pathOutputSubjectDetailsRda <- file.path(directoryDatasetsRda, "SubjectDetails79.rda")
+pathOutputSubjectDetails <- file.path(directoryDatasetsRda, "SubjectDetails79.rda")
 
 ###############################################################
 ###  ExtraOutcomes79
@@ -27,23 +26,25 @@ ExtraOutcomes79 <- read.csv(file.path(directoryDatasetsCsv, "ExtraOutcomes79.csv
 # ExtraOutcomes79$SubjectTag <- round(ExtraOutcomes79$SubjectTag)
 
 sapply(ExtraOutcomes79, class)
+save(ExtraOutcomes79, file=pathOutputExtraOutcomes, compress="xz")
+
 ###############################################################
 ###  Links79PairExpanded and Links79Pair 
 ###############################################################
-Links79PairWithoutOutcomes <- read.csv(pathInputLinks, stringsAsFactors=FALSE)
+dsLinks79PairWithoutOutcomes <- read.csv(pathInputLinks, stringsAsFactors=FALSE)
 pairVariablesToDrop <- c("MultipleBirthIfSameSex", "RImplicitSubject", "RImplicitMother")
-Links79PairWithoutOutcomes <- Links79PairWithoutOutcomes[, !(colnames(Links79PairWithoutOutcomes) %in% pairVariablesToDrop)]
+dsLinks79PairWithoutOutcomes <- dsLinks79PairWithoutOutcomes[, !(colnames(dsLinks79PairWithoutOutcomes) %in% pairVariablesToDrop)]
 
-sapply(Links79PairWithoutOutcomes, class)
+sapply(dsLinks79PairWithoutOutcomes, class)
 
 ExtraOutcomes79$SubjectTag <- NlsyLinks::CreateSubjectTag(subjectID=ExtraOutcomes79$SubjectID, generation=ExtraOutcomes79$Generation)
-# colnames(Links79PairWithoutOutcomes)
+# colnames(dsLinks79PairWithoutOutcomes)
 firstNames <- c("Subject1Tag", "Subject2Tag")
-remaining <- setdiff(colnames(Links79PairWithoutOutcomes), firstNames)
+remaining <- setdiff(colnames(dsLinks79PairWithoutOutcomes), firstNames)
 Links79PairExpanded <- NlsyLinks::CreatePairLinksSingleEntered(
   outcomeNames=c("MathStandardized", "HeightZGenderAge"), 
   outcomeDataset=ExtraOutcomes79, 
-  linksPairDataset=Links79PairWithoutOutcomes, 
+  linksPairDataset=dsLinks79PairWithoutOutcomes, 
   linksNames=remaining)
 Links79PairExpanded <- Links79PairExpanded[Links79PairExpanded$Subject1Tag < Links79PairExpanded$Subject2Tag, ]
 
@@ -74,5 +75,4 @@ channel <- RODBC::odbcDriverConnect("driver={SQL Server}; Server=Bee\\Bass; Data
 SubjectDetails79 <- sqlQuery(channel, "SELECT * FROM NlsLinks.dbo.vewSubjectDetails79")
 odbcClose(channel)
 summary(SubjectDetails79)
-save(SubjectDetails79, file=pathOutputSubjectDetailsRda, compress="xz")
-# saveRDS(dsSubjectDetails, file=file.path(directoryDatasetsRda, "SubjectDetails79.rds"), compress="xz")
+save(SubjectDetails79, file=Links79PairWithoutOutcomes, compress="xz")
