@@ -11,8 +11,10 @@ require(RODBC)
 ###############################################################
 directoryDatasetsCsv <- "./OutsideData" #These CSVs are in the repository, but not in the build.
 directoryDatasetsRda <- "./data" #These RDAs are derived from the CSV, and included in the build as compressed binaries.
+algorithmVersion <- 84L
 
-pathInputLinks <- file.path(directoryDatasetsCsv, "Links2011V83.csv")
+pathInputLinks <- file.path(directoryDatasetsCsv, paste0("Links2011V", algorithmVersion, ".csv"))
+pathInputSubjectDetails <- file.path(directoryDatasetsCsv, paste0("SubjectDetailsV", algorithmVersion, ".csv"))
 
 pathOutputExtraOutcomes <- file.path(directoryDatasetsRda, "ExtraOutcomes79.rda")
 pathOutputLinkTrim <- file.path(directoryDatasetsRda, "Links79Pair.rda")
@@ -23,7 +25,7 @@ pathOutputSubjectDetails <- file.path(directoryDatasetsRda, "SubjectDetails79.rd
 ###  ExtraOutcomes79
 ###############################################################
 ExtraOutcomes79 <- read.csv(file.path(directoryDatasetsCsv, "ExtraOutcomes79.csv"))
-# ExtraOutcomes79$SubjectTag <- round(ExtraOutcomes79$SubjectTag)
+# ExtraOutcomes79$SubjectTag <- as.integer(round(ExtraOutcomes79$SubjectTag))
 
 sapply(ExtraOutcomes79, class)
 save(ExtraOutcomes79, file=pathOutputExtraOutcomes, compress="xz")
@@ -67,12 +69,7 @@ save(Links79PairExpanded, file=pathOutputLinkExpanded, compress="xz")
 ###############################################################
 ###  SubjectDetails
 ###############################################################
+SubjectDetails79 <- read.csv(pathInputSubjectDetails, stringsAsFactors=TRUE)
 
-
-##TODO:  This section shouldn't pull from a specific database.  This code should be moved to a sister file, like "D:\Projects\BG\Links2011\NlsyLinksDetermination\CodingUtilities\QueryRelatedValues.R"
-
-channel <- RODBC::odbcDriverConnect("driver={SQL Server}; Server=Bee\\Bass; Database=NlsLinks; Uid=NlsyReadWrite; Pwd=nophi")
-SubjectDetails79 <- sqlQuery(channel, "SELECT * FROM NlsLinks.dbo.vewSubjectDetails79")
-odbcClose(channel)
-summary(SubjectDetails79)
-save(SubjectDetails79, file=Links79PairWithoutOutcomes, compress="xz")
+sapply(SubjectDetails79, class)
+save(SubjectDetails79, file=pathOutputSubjectDetails, compress="xz")
