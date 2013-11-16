@@ -39,11 +39,10 @@
 }
 \description{
   Creates a linking file for BG designs using this file
-  structure (e.g., DF analysis, other ACE modeling).
-
-  A DF analysis requires a double-entered file that
-  contains the \code{R} value for the pair, and their two
-  outcome variable values.
+  structure (e.g., DF analysis, other ACE modeling). A DF
+  analysis requires a double-entered file that contains the
+  \code{R} value for the pair, and their two outcome
+  variable values.
 
   \code{CreatePairLinksDoubleEnteredWithNoOutcomes} is
   intended to be a primarily a helper function for
@@ -75,10 +74,10 @@ ValidatePairLinksAreSymmetric(dsDouble) #Should return TRUE.
   Will Beasley
 }
 \references{
-  For more information about a DF analysis, see: Rodgers,
-  Joseph Lee, & Kohler, Hans-Peter (2005).  Reformulating
-  and simplifying the DF analysis model.
-  \href{http://www.springerlink.com/content/n3x1v1q282583366/}{\emph{Behavior
-  Genetics, 35} (2), 211-217}.
+  For more information about a DF analysis, see Rodgers,
+  Joseph Lee, & Kohler, Hans-Peter (2005).
+  \href{http://www.springerlink.com/content/n3x1v1q282583366/}{Reformulating
+  and simplifying the DF analysis model.} \emph{Behavior
+  Genetics, 35} (2), 211-217.
 }
 

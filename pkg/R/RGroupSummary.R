@@ -14,7 +14,7 @@
 #' @param rName The name of the variable specifying the pair's \code{Relatedness} coefficient.
 #' @param determinantThreshold The minimum value the covariance matrix's determinant (for the group) should exceed to be considered Positive Definite.
 #' 
-#' @details This function doesn't specific to an ACE model and groups defined by \code{R}.  It could be applied to any multiple-group SEM with two manifest/outcome variables.  In the future, we may generalize it beyond two manifest variables.
+#' @details This function isn't specific to an ACE model and groups defined by \code{R}.  It could be applied to any multiple-group SEM with two manifest/outcome variables.  In the future, we may generalize it beyond two manifest variables.
 #' 
 #' To get summary stats for the entire sample, create a dummy indicator variable that assigns everyone to the same group.  See the second example below.
 #' 
@@ -67,13 +67,15 @@
 #' (dsSampleSummary <- RGroupSummary(dsLinks, oName_1, oName_2, rName="Dummy"))
 #'                      
 #' #Should return:
-#' # Dummy Included PairCount M1Variance M2Variance M1M2Covariance Correlation Determinant PosDefinite
-#' #1    1     TRUE      8392    216.466   229.2988       90.90266   0.4080195     41372.1        TRUE
+#' #  Dummy Included PairCount   O1Mean   O2Mean O1Variance O2Variance O1O2Covariance
+#' #1     1     TRUE      8392 98.07162 98.56864    216.466   229.2988       90.90266
+#' #  Correlation Determinant PosDefinite
+#' #1   0.4080195     41372.1        TRUE
 #' ###
 #' ### ReadCsvNlsy79
 #' ###
 #' \dontrun{
-#' filePathGen2 <- "./NlsyLinksStaging/Datasets/Gen2Birth.csv"
+#' filePathGen2 <- "~/Nlsy/Datasets/Gen2Birth.csv"
 #' ds <- ReadCsvNlsy79Gen2(filePath=filePathGen2)
 #' }
 #' 
