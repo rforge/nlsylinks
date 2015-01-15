@@ -3,9 +3,10 @@
 ^\.gitignore$
 ^\.travis.yml$
 ^cran-comments\.md$
-^ShortcutLucky1304\.lnk$
+^ShortcutLucky1404\.lnk$
 
 DocumentationPeek.pdf
+Article/
 Playgrounds/
 OutsideData/
 UtilityScripts/
